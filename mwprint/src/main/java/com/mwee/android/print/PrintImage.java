@@ -15,6 +15,7 @@ public class PrintImage {
     /**
      * 打印图片
      *
+     *
      * @param out OutputStream
      * @param bm  Bitmap
      */
