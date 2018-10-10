@@ -12,17 +12,17 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile rootProject.ext.dependencies["constraint"]
-    compile rootProject.ext.dependencies["stetho"]
-    compile rootProject.ext.dependencies["avi-loading"]
-    compile rootProject.ext.dependencies["cardview"]
-    compile project(':mwview')
-    compile project(':model')
-    compile project(':mwnet')
-    compile project(':mwsqlite')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation rootProject.ext.dependencies["constraint"]
+    implementation rootProject.ext.dependencies["stetho"]
+    implementation rootProject.ext.dependencies["avi-loading"]
+    implementation rootProject.ext.dependencies["cardview"]
+    implementation project(':mwview')
+    implementation project(':model')
+    implementation project(':mwnet')
+    implementation project(':mwsqlite')
 
-    compile project(path: ':posdinnerprinter')
+    implementation project(path: ':posdinnerprinter')
 
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 }

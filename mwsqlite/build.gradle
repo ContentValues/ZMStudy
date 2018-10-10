@@ -14,7 +14,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':mwtools')
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api project(':mwtools')
 
 }

@@ -14,13 +14,13 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    api rootProject.ext.dependencies["appcompat-v7"]
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    compile project(path: ':mwtools')
-    compile project(path: ':mwsqlite')
-    compile project(path: ':mwprint')
+    api project(path: ':mwtools')
+    api project(path: ':mwsqlite')
+    api project(path: ':mwprint')
 }

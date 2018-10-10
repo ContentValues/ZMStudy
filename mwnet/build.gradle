@@ -13,8 +13,8 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    compile rootProject.ext.dependencies["okhttp3"]
-    compile project(':mwtools')
-    compile project(path: ':mwsqlite')
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api rootProject.ext.dependencies["okhttp3"]
+    api project(':mwtools')
+    api project(path: ':mwsqlite')
 }
