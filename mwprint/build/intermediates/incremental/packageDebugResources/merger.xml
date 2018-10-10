@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main$Generated" generated="true"><source path="/Users/zhangmin/Documents/AndroidStudio/ZMStudy/mwprint/src/main/res"/><source path="/Users/zhangmin/Documents/AndroidStudio/ZMStudy/mwprint/build/generated/res/rs/debug"/><source path="/Users/zhangmin/Documents/AndroidStudio/ZMStudy/mwprint/build/generated/res/resValues/debug"/></dataSet><dataSet config="main" generated-set="main$Generated"><source path="/Users/zhangmin/Documents/AndroidStudio/ZMStudy/mwprint/src/main/res"><file name="zh2hans" path="/Users/zhangmin/Documents/AndroidStudio/ZMStudy/mwprint/src/main/res/raw/zh2hans.properties" qualifiers="" type="raw"/><file name="zh2hant" path="/Users/zhangmin/Documents/AndroidStudio/ZMStudy/mwprint/src/main/res/raw/zh2hant.properties" qualifiers="" type="raw"/><file path="/Users/zhangmin/Documents/AndroidStudio/ZMStudy/mwprint/src/main/res/values/theme.xml" qualifiers=""><style name="Transparent" parent="android:Theme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowAnimationStyle">@null</item>
+    </style></file><file name="devices" path="/Users/zhangmin/Documents/AndroidStudio/ZMStudy/mwprint/src/main/res/xml/devices.xml" qualifiers="" type="xml"/></source><source path="/Users/zhangmin/Documents/AndroidStudio/ZMStudy/mwprint/build/generated/res/rs/debug"/><source path="/Users/zhangmin/Documents/AndroidStudio/ZMStudy/mwprint/build/generated/res/resValues/debug"/></dataSet><dataSet config="debug$Generated" generated="true"><source path="/Users/zhangmin/Documents/AndroidStudio/ZMStudy/mwprint/src/debug/res"/></dataSet><dataSet config="debug" generated-set="debug$Generated"><source path="/Users/zhangmin/Documents/AndroidStudio/ZMStudy/mwprint/src/debug/res"/></dataSet><mergedItems/></merger>

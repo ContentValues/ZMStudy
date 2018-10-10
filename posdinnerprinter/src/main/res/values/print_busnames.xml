@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="print_drive_path" translatable="false">
+        <item>xdroid.mwee.com.posdinnerprinter.business.OrderCommandProcessor</item>
+    </string-array>
+</resources>

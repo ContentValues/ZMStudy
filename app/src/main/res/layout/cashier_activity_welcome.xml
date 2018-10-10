@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xdroid.mwee.com.mwcommon.view.XStateController xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/contentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:x_emptyLayoutId="@layout/view_empty"
+    app:x_errorLayoutId="@layout/view_error"
+    app:x_loadingLayoutId="@layout/view_loading">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/cashier_bg_login"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="70dp"
+            android:src="@mipmap/cashier_icon_welcome" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:text="美味不用等旗下产品"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+
+</xdroid.mwee.com.mwcommon.view.XStateController>

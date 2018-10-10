@@ -1,0 +1,26 @@
+apply plugin: 'maven'
+
+android {
+    compileSdkVersion 27
+    lintOptions {
+        abortOnError false
+    }
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 27
+        resConfigs "en", "zh", "zh-rCN"
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'armeabi', 'armeabi-v7a', 'x86'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+/*dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly 'com.android.support:appcompat-v7:27.1.0'
+    compileOnly 'com.alibaba:fastjson:1.2.46'
+}*/

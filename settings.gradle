@@ -1,0 +1,1 @@
+include ':app', ':RxJavaTest', ':model', ':mwtools', ':mwnet', ':mwview', ':mwsqlite', ':posdinnerprinter', ':mwdriverbus'/*, ':mwbase'*/, ':mwprint'

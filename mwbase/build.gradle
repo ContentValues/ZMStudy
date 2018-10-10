@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+apply from: '../globalConfig.gradle'
+
+apply plugin: 'maven'
+android {
+
+    defaultConfig {
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    compileOnly project(':mwtools')
+}
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "http://nexus.mwbyd.cn/nexus/content/repositories/jichu-snapshots/") {
+                authentication(userName: "9now", password: "9now123")
+            }
+            pom.version = "0.4.4-SNAPSHOT"
+            pom.artifactId = "mwbase"
+            pom.groupId = "com.mwee.android"
+        }
+    }
+}
