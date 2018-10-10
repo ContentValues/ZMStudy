@@ -67,7 +67,7 @@ public class TableAdapter extends XRecAdapter<TableSection, RecyclerView.ViewHol
 
     }
 
-   /* @Override
+  /*  @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         TableSection model = data.get(position);
         holder.tvTableName.setText(model.t.fsmtablename);
@@ -84,7 +84,7 @@ public class TableAdapter extends XRecAdapter<TableSection, RecyclerView.ViewHol
             tvTableName = itemView.findViewById(R.id.tvTableName);
             tvTablePersonCount = itemView.findViewById(R.id.tvTablePersonCount);
             tvTableTime = itemView.findViewById(R.id.tvTableTime);
-            tvTableTime = itemView.findViewById(R.id.tvTableMoney);
+            tvTableMoney = itemView.findViewById(R.id.tvTableMoney);
         }
     }
 
