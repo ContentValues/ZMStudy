@@ -66,6 +66,8 @@ public class CircleView extends View {
 
         LogUtil.log("CircleView","onDraw()2222");
 
+        LogUtil.log("CircleView","git add .");
+
         canvas.save();
 
         //int r = getMeasuredWidth() / 2;//也可以是getMeasuredHeight()/2,本例中我们已经将宽高设置相等了
