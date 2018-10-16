@@ -2,17 +2,18 @@ apply plugin: 'com.android.application'
 apply from: '../globalConfig.gradle'
 
 android {
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation rootProject.ext.dependencies["constraint"]
     implementation rootProject.ext.dependencies["stetho"]
     implementation rootProject.ext.dependencies["avi-loading"]
@@ -21,8 +22,6 @@ dependencies {
     implementation project(':model')
     implementation project(':mwnet')
     implementation project(':mwsqlite')
-
     implementation project(path: ':posdinnerprinter')
-
     testImplementation 'junit:junit:4.12'
 }
