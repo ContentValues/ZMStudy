@@ -21,7 +21,7 @@ $RECYCLE.BIN/
 *.iml
 .gradle
 out
-iml
+.iml
 gen
 .settings
 build
