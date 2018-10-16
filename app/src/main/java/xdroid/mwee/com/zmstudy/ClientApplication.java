@@ -42,6 +42,9 @@ public class ClientApplication extends Application {
 
         //BaseConfig.ENV = Environment.DEV;
         //BaseConfig.ENV = Environment.DEV;
+        //BaseConfig.ENV = Environment.DEV;
+        //BaseConfig.ENV = Environment.DEV;
+        //BaseConfig.ENV = Environment.DEV;
 
         GlobalCache.getInstance().registerContext(context);
         GlobalCache.getInstance().setLogOpen(BaseConfig.ENV != Environment.PRODUCT);
