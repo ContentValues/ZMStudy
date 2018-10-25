@@ -13,7 +13,7 @@ import xdroid.mwee.com.mwcommon.callback.UiCallback;
 import xdroid.mwee.com.mwcommon.callback.UiDelegate;
 import xdroid.mwee.com.mwcommon.event.BusFactory;
 
-public abstract class XFragment extends Fragment implements UiCallback {
+public abstract class XFragment extends BaseFragment implements UiCallback {
     public View rootView;
     protected LayoutInflater layoutInflater;
     protected Activity context;

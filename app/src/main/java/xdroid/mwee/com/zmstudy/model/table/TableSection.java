@@ -7,11 +7,11 @@ import xdroid.mwee.com.zmstudy.model.SectionEntity;
  * Created by zhangmin on 2018/6/23.
  */
 
-public class TableSection extends SectionEntity<MtableDBModel, String> {
+public class TableSection extends SectionEntity<MtableDBModel, HeaderModel> {
 
     public TableSection headerSection;
 
-    public TableSection(boolean isHeader, String header) {
+    public TableSection(boolean isHeader, HeaderModel header) {
         super(isHeader, header);
     }
 

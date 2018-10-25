@@ -1,12 +1,7 @@
 package xdroid.mwee.com.mwcommon.base;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.app.FragmentManager;
 
@@ -28,7 +23,7 @@ public interface Host {
      *
      * @return BaseActivity
      */
-    LifeCircleActivity getActivityWithinHost();
+    BaseActivity getActivityWithinHost();
 
     /**
      * 获取FragmentManager

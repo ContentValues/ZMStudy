@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * BladeExceptionHandler
- * Created by virgil on 16/7/21.
+ * Created by zhangmin on 16/7/21.
  */
 public class BladeExceptionHandler implements Thread.UncaughtExceptionHandler {
     private final static BladeExceptionHandler instance = new BladeExceptionHandler();

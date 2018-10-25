@@ -8,16 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.mwee.android.tools.ProcessUtil;
-
 import java.util.Random;
-
-import xdroid.mwee.com.model.util.db.MtableDBModel;
-import xdroid.mwee.com.mwcommon.base.SimpleRecAdapter;
 import xdroid.mwee.com.mwcommon.base.XRecAdapter;
 import xdroid.mwee.com.zmstudy.R;
-import xdroid.mwee.com.zmstudy.model.SectionEntity;
 import xdroid.mwee.com.zmstudy.model.table.TableSection;
 
 /**
@@ -58,10 +51,10 @@ public class TableAdapter extends XRecAdapter<TableSection, RecyclerView.ViewHol
             int g = random.nextInt(256);
             int b = random.nextInt(256);
             ((HeaderSectionViewHolder) holder).tvHeader.setBackgroundColor(Color.rgb(r, g, b));
-            ((HeaderSectionViewHolder) holder).tvHeader.setText(model.header);
+            ((HeaderSectionViewHolder) holder).tvHeader.setText(model.header.title + "---" + model.header.subTitle);
         } else {
             ((ViewHolder) holder).tvTableName.setText(model.t.fsmtablename);
-            ((ViewHolder) holder).tvTablePersonCount.setText(model.t.fiseats);
+            ((ViewHolder) holder).tvTablePersonCount.setText(String.format("%s人桌", model.t.fiseats));
             ((ViewHolder) holder).tvTableTime.setText(model.t.fsupdatetime);
         }
 

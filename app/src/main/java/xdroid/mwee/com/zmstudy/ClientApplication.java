@@ -13,7 +13,7 @@ import com.mwee.android.tools.base.Environment;
 
 import xdroid.mwee.com.mwbase.net.OkHttpUtils;
 import okhttp3.OkHttpClient;
-import xdroid.mwee.com.posdinnerprinter.framework.PrintApplication;
+//import xdroid.mwee.com.posdinnerprinter.framework.PrintApplication;
 import xdroid.mwee.com.zmstudy.db.DBInit;
 import xdroid.mwee.com.zmstudy.utils.InitDebugTools;
 
@@ -39,15 +39,6 @@ public class ClientApplication extends Application {
         OkHttpUtils.initClient(okHttpClient);
 
         BaseConfig.ENV = Environment.DEV;
-
-        //BaseConfig.ENV = Environment.DEV;
-        //BaseConfig.ENV = Environment.DEV;
-        //BaseConfig.ENV = Environment.DEV;
-        //BaseConfig.ENV = Environment.DEV;
-        //BaseConfig.ENV = Environment.DEV;
-        //BaseConfig.ENV = Environment.DEV;
-        //BaseConfig.ENV = Environment.DEV;
-
         GlobalCache.getInstance().registerContext(context);
         GlobalCache.getInstance().setLogOpen(BaseConfig.ENV != Environment.PRODUCT);
 
@@ -55,7 +46,7 @@ public class ClientApplication extends Application {
         InitDebugTools.initStetho(context);
 
 
-        PrintApplication.init(context);
+        //PrintApplication.init(context);
 
     }
 

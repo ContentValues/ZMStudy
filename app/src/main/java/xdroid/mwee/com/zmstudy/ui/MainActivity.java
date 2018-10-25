@@ -33,9 +33,9 @@ public class MainActivity extends XActivity implements NavigationView.OnNavigati
     ViewPager viewPager;
 
     private List<Fragment> fragmentList = new ArrayList<>();
-    private String[] titles = {"小帅哥", "妹子", "订单", "桌台"};
+    private String[] titles = {"小帅哥", "妹子", "订单", "桌台","动画"};
 
-    private int[] pics = new int[]{R.mipmap.ios_icon, R.mipmap.js_icon, R.mipmap.other_icon, R.mipmap.android_icon};
+    private int[] pics = new int[]{R.mipmap.ios_icon, R.mipmap.js_icon, R.mipmap.other_icon, R.mipmap.android_icon, R.mipmap.js_icon};
     private DrawerLayout drawer_layout;
     private NavigationView navigationView;
 
@@ -63,6 +63,7 @@ public class MainActivity extends XActivity implements NavigationView.OnNavigati
         fragmentList.add(GirlFragment.newInstance());
         fragmentList.add(FastFoodOrderFragment.newInstance());
         fragmentList.add(TableFragment.newInstance());
+        fragmentList.add(AnimatorViewFragment.newInstance());
 
        /* tabLayout.addTab(tabLayout.newTab().setText("小帅哥"));
         tabLayout.addTab(tabLayout.newTab().setText("妹子好漂亮"));

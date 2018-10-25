@@ -28,6 +28,7 @@ import xdroid.mwee.com.zmstudy.R;
 import xdroid.mwee.com.zmstudy.adapter.MareaAdapter;
 import xdroid.mwee.com.zmstudy.adapter.TableAdapter;
 import xdroid.mwee.com.zmstudy.cache.AppCache;
+import xdroid.mwee.com.zmstudy.model.table.HeaderModel;
 import xdroid.mwee.com.zmstudy.model.table.TableSection;
 
 /**
@@ -97,7 +98,11 @@ public class TableFragment extends XLazyFragment {
             Set<String> stringSet = AppCache.getInstance().areaTableList.keySet();
             for (String header : stringSet) {
                 String fsMAreaNameHeader = DBSimpleUtil.queryString(APPConfig.DB_MAIN, "select fsMAreaName from tbmarea where fiStatus = '1' and fsMAreaId = '" + header + "'");
-                TableSection tableHeaderSection = new TableSection(true, fsMAreaNameHeader);
+
+                HeaderModel headerModel = new HeaderModel();
+                headerModel.title = fsMAreaNameHeader;
+                headerModel.subTitle = "测试头部11";
+                TableSection tableHeaderSection = new TableSection(true, headerModel);
                 dataList.add(tableHeaderSection);
                 for (MtableDBModel mtableDBModel : AppCache.getInstance().areaTableList.get(header)) {
                     TableSection tableItemSection = new TableSection(tableHeaderSection, mtableDBModel);
@@ -107,7 +112,12 @@ public class TableFragment extends XLazyFragment {
             tableAdapter.setData(dataList);
         } else {
             List<TableSection> dataList = new ArrayList();
-            TableSection tableHeaderSection = new TableSection(true, model.fsMAreaName);
+
+            HeaderModel headerModel2 = new HeaderModel();
+            headerModel2.title = model.fsMAreaName;
+            headerModel2.subTitle = "测试头部11";
+
+            TableSection tableHeaderSection = new TableSection(true, headerModel2);
             dataList.add(tableHeaderSection);
             for (MtableDBModel mtableDBModel : AppCache.getInstance().areaTableList.get(model.fsMAreaId)) {
                 TableSection tableItemSection = new TableSection(tableHeaderSection, mtableDBModel);

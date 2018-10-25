@@ -92,7 +92,7 @@ public class FastFoodOrderFragment extends XLazyFragment implements View.OnClick
                 doPackOrder();
                 break;
             case R.id.tvPrinterPre:
-                PrintBillUtil.printPreBill(orderCache);
+                //PrintBillUtil.printPreBill(orderCache);
                 break;
             default:
                 break;

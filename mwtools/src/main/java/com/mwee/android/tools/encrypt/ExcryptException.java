@@ -2,7 +2,7 @@ package com.mwee.android.tools.encrypt;
 
 /**
  * 加密异常
- * Created by 帅哥 on 2017/2/8.
+ * Created by zhangmin on 2017/2/8.
  */
 
 public class ExcryptException extends RuntimeException {

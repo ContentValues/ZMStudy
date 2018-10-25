@@ -21,7 +21,7 @@ android {
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
     api project(':mwtools')
-    api project(':mwdriverbus')
+    //api project(':mwdriverbus')
 
     api rootProject.ext.dependencies["zxing"]
     api rootProject.ext.dependencies["bugly"]

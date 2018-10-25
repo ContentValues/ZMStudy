@@ -2,7 +2,7 @@ package com.mwee.android.tools.log;
 
 /**
  * LogBizConfigBuilder
- * Created by virgil on 16/7/21.
+ * Created by zhangmin on 16/7/21.
  */
 public class LogBizConfigBuilder {
     public static final String URL_LOG_SERVER_PRODUCT = "http://b.mwee.cn/shop/error.php";

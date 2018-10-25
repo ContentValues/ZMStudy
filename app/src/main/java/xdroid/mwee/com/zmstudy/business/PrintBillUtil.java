@@ -1,21 +1,4 @@
 package xdroid.mwee.com.zmstudy.business;
-
-import com.alibaba.fastjson.JSONObject;
-import com.mwee.android.sqlite.base.APPConfig;
-import com.mwee.android.sqlite.base.DBSimpleUtil;
-import com.mwee.android.tools.DateUtil;
-
-import java.util.List;
-
-import xdroid.mwee.com.model.util.db.SellDBModel;
-import xdroid.mwee.com.model.util.db.SellOrderItemDBModel;
-import xdroid.mwee.com.model.util.db.ShopDBModel;
-import xdroid.mwee.com.posdinnerprinter.print.PrintConnector;
-import xdroid.mwee.com.posdinnerprinter.print.PrintJSONBuilder;
-import xdroid.mwee.com.posdinnerprinter.print.PrintTaskDBModel;
-import xdroid.mwee.com.zmstudy.model.order.OrderCache;
-import xdroid.mwee.com.zmstudy.model.order.OrderSaveDBUtil;
-
 /**
  * 结账相关的打印数据构造类
  * Created by virgil on 2017/1/22.
@@ -29,7 +12,7 @@ public class PrintBillUtil {
      *
      * @return
      */
-    public static void printPreBill(OrderCache orderCache) {
+   /* public static void printPreBill(OrderCache orderCache) {
 
         JSONObject datas = new JSONObject();
         SellDBModel sell = DBSimpleUtil.query(APPConfig.DB_MAIN, "select *, (fdSaleAmt+fdRoundAmt) as fdSaleAmt FROM tbSell where fsSellNo = '" + orderCache.orderID + "'", SellDBModel.class);
@@ -63,5 +46,5 @@ public class PrintBillUtil {
         task.fsPrnData = datas.toJSONString();
         task.fsPrinterName = DBSimpleUtil.queryString(APPConfig.DB_MAIN, "select fsPrinterName from tbHost where fsHostId = 'Cashier'");
         PrintConnector.getInstance().print(task, false);
-    }
+    }*/
 }

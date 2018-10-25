@@ -200,8 +200,8 @@ public class LifeCircleFragment extends Fragment implements Host {
     }
 
     @Override
-    public LifeCircleActivity getActivityWithinHost() {
-        return (LifeCircleActivity) getActivity();
+    public BaseActivity getActivityWithinHost() {
+        return (BaseActivity) getActivity();
     }
 
     @Override

@@ -22,6 +22,6 @@ dependencies {
     implementation project(':model')
     implementation project(':mwnet')
     implementation project(':mwsqlite')
-    implementation project(path: ':posdinnerprinter')
+    //implementation project(path: ':posdinnerprinter')
     testImplementation 'junit:junit:4.12'
 }

@@ -29,7 +29,7 @@ import java.util.Map;
 
 /**
  * LogUpload
- * Created by virgil on 16/7/14.
+ * Created by zhangmin on 16/7/14.
  */
 public class LogUpload {
 

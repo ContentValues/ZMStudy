@@ -16,7 +16,7 @@ import javax.crypto.spec.SecretKeySpec;
 /**
  * 美味通讯的加密算法
  *
- * @author 帅哥
+ * @author zhangmin
  */
 public class EncryptUtil {
     /***

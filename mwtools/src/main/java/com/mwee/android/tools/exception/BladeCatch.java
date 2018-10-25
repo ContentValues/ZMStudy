@@ -4,7 +4,7 @@ import android.content.Context;
 
 /**
  * BladeCatch
- * Created by virgil on 16/7/21.
+ * Created by zhangmin on 16/7/21.
  */
 public class BladeCatch {
     public static void init(Context context) {

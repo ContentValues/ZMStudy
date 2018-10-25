@@ -14,7 +14,7 @@ import java.util.zip.ZipOutputStream;
 
 /**
  * Zip的工具包
- * @author 帅哥
+ * @author zhangmin
  */
 public class ZipUtils {
     /**

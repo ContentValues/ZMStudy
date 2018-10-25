@@ -8,7 +8,7 @@ import xdroid.mwee.com.mwcommon.callback.UiDelegate;
 import xdroid.mwee.com.mwcommon.event.BusFactory;
 
 
-public abstract class XActivity extends LifeCircleActivity implements UiCallback {
+public abstract class XActivity extends BaseActivity implements UiCallback {
     protected Activity context;
     protected UiDelegate uiDelegate;
 
