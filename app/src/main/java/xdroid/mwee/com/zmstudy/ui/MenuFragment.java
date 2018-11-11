@@ -1,43 +1,43 @@
 package xdroid.mwee.com.zmstudy.ui;
 
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.LayoutInflater;
-import android.widget.AdapterView;
-
-import xdroid.mwee.com.mwcommon.base.XLazyFragment;
+import android.view.View;
+import xdroid.mwee.com.mwcommon.base.BaseFragment;
 import xdroid.mwee.com.mwcommon.callback.ItemCallback;
 import xdroid.mwee.com.mwcommon.callback.SimpleCallback;
-import xdroid.mwee.com.mwcommon.xrecyclerview.XRecyclerContentLayout;
 import xdroid.mwee.com.mwcommon.xrecyclerview.XRecyclerView;
-import xdroid.mwee.com.mwcommon.xrecyclerview.divider.HorizontalDividerItemDecoration;
-import xdroid.mwee.com.mwcommon.xrecyclerview.divider.VerticalDividerItemDecoration;
 import xdroid.mwee.com.zmstudy.R;
 import xdroid.mwee.com.zmstudy.adapter.MenuAdapter;
 import xdroid.mwee.com.zmstudy.adapter.MenuClsAdapter;
 import xdroid.mwee.com.zmstudy.cache.AppCache;
-import xdroid.mwee.com.zmstudy.model.menu.MenuBiz;
 import xdroid.mwee.com.zmstudy.model.menu.MenuItem;
 
 /**
  * Created by zhangmin on 2018/6/20.
  */
 
-public class MenuFragment extends XLazyFragment {
+public class MenuFragment extends BaseFragment {
 
     private MenuClsAdapter menuClsAdapter;
     private MenuAdapter menuAdapter;
+    private XRecyclerView mMenuClsLsv;
+    private XRecyclerView mMenuRecyclerView;
 
     public static MenuFragment newInstance() {
         return new MenuFragment();
     }
 
     @Override
-    public void initData(Bundle savedInstanceState) {
+    public void initView(View v) {
+        mMenuClsLsv = v.findViewById(R.id.mMenuClsLsv);
+        mMenuRecyclerView = v.findViewById(R.id.menuContentLayout);
+    }
 
-        XRecyclerView mMenuClsLsv = findViewById(R.id.mMenuClsLsv);
-        XRecyclerView mMenuRecyclerView = findViewById(R.id.menuContentLayout);
+    @Override
+    public void initData() {
+        super.initData();
+
 
         menuClsAdapter = new MenuClsAdapter(getContext());
         mMenuClsLsv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));

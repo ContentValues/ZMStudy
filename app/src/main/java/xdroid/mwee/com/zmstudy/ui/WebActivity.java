@@ -14,9 +14,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import java.util.ArrayList;
-
-import xdroid.mwee.com.mwcommon.base.XActivity;
+import xdroid.mwee.com.mwcommon.base.BaseActivity;
 import xdroid.mwee.com.mwcommon.view.XStateController;
 import xdroid.mwee.com.zmstudy.R;
 import xdroid.mwee.com.zmstudy.router.Router;
@@ -25,7 +23,7 @@ import xdroid.mwee.com.zmstudy.router.Router;
  * Created by zhangmin on 2018/6/19.
  */
 
-public class WebActivity extends XActivity {
+public class WebActivity extends BaseActivity {
 
     Toolbar toolbar;
     WebView webView;
@@ -38,16 +36,21 @@ public class WebActivity extends XActivity {
     public static final String PARAM_URL = "url";
     public static final String PARAM_DESC = "desc";
 
-
     @Override
-    public void initData(Bundle savedInstanceState) {
-        url = getIntent().getStringExtra(PARAM_URL);
-        desc = getIntent().getStringExtra(PARAM_DESC);
+    public void initView() {
 
         toolbar = findViewById(R.id.toolbar);
         webView = findViewById(R.id.webView);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
         contentLayout = findViewById(R.id.contentLayout);
+    }
+
+    @Override
+    public void initData(Bundle savedInstanceState) {
+        super.initData(savedInstanceState);
+        url = getIntent().getStringExtra(PARAM_URL);
+        desc = getIntent().getStringExtra(PARAM_DESC);
+
 
         initToolbar();
         initRefreshLayout();

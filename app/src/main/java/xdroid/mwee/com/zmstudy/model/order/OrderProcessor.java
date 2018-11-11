@@ -1,16 +1,19 @@
 package xdroid.mwee.com.zmstudy.model.order;
 
 import android.text.TextUtils;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.mwee.android.sqlite.base.APPConfig;
 import com.mwee.android.sqlite.base.DBSimpleUtil;
 import com.mwee.android.tools.DateUtil;
 import com.mwee.android.tools.LogUtil;
-import com.mwee.android.tools.UUIDUtil;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
 import xdroid.mwee.com.model.util.db.MenuclsDBModel;
 import xdroid.mwee.com.model.util.db.MenuitemDBModel;
 import xdroid.mwee.com.model.util.db.SellDBModel;
@@ -18,7 +21,9 @@ import xdroid.mwee.com.model.util.db.SellOrderDBModel;
 import xdroid.mwee.com.model.util.db.SellOrderItemDBModel;
 import xdroid.mwee.com.model.util.db.SellcheckDBModel;
 import xdroid.mwee.com.model.util.db.UserDBModel;
+
 import com.mwee.android.tools.ListUtil;
+
 import xdroid.mwee.com.zmstudy.db.client.ClientMenuDBUtil;
 import xdroid.mwee.com.zmstudy.db.client.HostDBUtil;
 import xdroid.mwee.com.zmstudy.db.client.MenuClsDBUtils;
@@ -61,6 +66,7 @@ public class OrderProcessor {
         }
 
     }
+
     /**
      * 创建SellOrderItemDBModel
      *
@@ -77,7 +83,7 @@ public class OrderProcessor {
         sellOrderItemDBModel.fiOrderSeq = temp.menuBiz.orderSeqID;
         sellOrderItemDBModel.fsseq = temp.menuBiz.uniq;
         if (TextUtils.isEmpty(sellOrderItemDBModel.fsseq)) {
-            sellOrderItemDBModel.fsseq = UUIDUtil.optUUID();
+            sellOrderItemDBModel.fsseq = UUID.randomUUID().toString();
         }
         //	--销售日期(开台日期)(营业日期)
         sellOrderItemDBModel.fsSellDate = orderCache.businessDate.contains("-") ? orderCache.businessDate : DateUtil.formartDateStrToTarget(orderCache.businessDate, "yyyyMMdd", "yyyy-MM-dd");
@@ -532,8 +538,8 @@ public class OrderProcessor {
 
         sellDBModel.fsBillSourceId = "";
         sellDBModel.fsBillSourceName = "";
-         sellDBModel.thirdOrderId = "";
-         sellDBModel.thirdOrderType = 0;
+        sellDBModel.thirdOrderId = "";
+        sellDBModel.thirdOrderType = 0;
         //	--来源单号
         sellDBModel.fsBillSourceNo = "";
         //第三方订单类型,see{@link com.mwee.android.pos.business.rapid.api.bean.model.NetOrderType}
@@ -692,7 +698,7 @@ public class OrderProcessor {
         sellDBModel.fdInvoiceAmt = BigDecimal.ZERO;//	--发票开出金额
 
         sellDBModel.fsVIPSource = "";//	--会员来源
-        sellDBModel.fiIsVIP =  0;//	--是否为会员;0=false/1=ture
+        sellDBModel.fiIsVIP = 0;//	--是否为会员;0=false/1=ture
 
         sellDBModel.fsCardNo = "";
         /*- 外送信息,暂不处理 -*/
@@ -735,7 +741,7 @@ public class OrderProcessor {
         sellDBModel.fiIsInvoice = 0;//需要开发票
         sellDBModel.fsInvoiceTitle = "";
         sellDBModel.fsInvoiceCls = "";
-        sellDBModel.fsdutyparagraph="";
+        sellDBModel.fsdutyparagraph = "";
         sellDBModel.fiIsInvoice = 0;
         //备用字段
         sellDBModel.fsbackup0 = "0";

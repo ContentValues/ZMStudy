@@ -10,10 +10,10 @@ import java.util.concurrent.TimeUnit;
 
 import com.mwee.android.tools.base.BaseConfig;
 import com.mwee.android.tools.base.Environment;
+import com.squareup.leakcanary.LeakCanary;
 
 import xdroid.mwee.com.mwbase.net.OkHttpUtils;
 import okhttp3.OkHttpClient;
-//import xdroid.mwee.com.posdinnerprinter.framework.PrintApplication;
 import xdroid.mwee.com.zmstudy.db.DBInit;
 import xdroid.mwee.com.zmstudy.utils.InitDebugTools;
 
@@ -44,6 +44,9 @@ public class ClientApplication extends Application {
 
         DBInit.init(context);
         InitDebugTools.initStetho(context);
+        if (!LeakCanary.isInAnalyzerProcess(context)) {
+            LeakCanary.install((Application) context.getApplicationContext());
+        }
 
 
         //PrintApplication.init(context);

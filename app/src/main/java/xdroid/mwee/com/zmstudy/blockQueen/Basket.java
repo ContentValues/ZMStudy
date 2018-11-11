@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 
-import xdroid.mwee.com.mwcommon.callback.NormalCallBack;
+import xdroid.mwee.com.mwcommon.callback.ResultAction;
 
 /**
  * Created by zhangmin on 2018/5/11.
@@ -52,9 +52,9 @@ public class Basket {
         //System.out.println("生产苹果：大小   start()" + loadingTasks.size());
 
 
-        ConsumeApple consumeApple = new ConsumeApple(appleProduct, new NormalCallBack<String>() {
+        ConsumeApple consumeApple = new ConsumeApple(appleProduct, new ResultAction<String>() {
             @Override
-            public void callBack(String s) {
+            public void action(String s) {
 
                 loadingTasks.remove(s);
 
@@ -80,12 +80,12 @@ public class Basket {
 
         public String appleName;
 
-        public NormalCallBack<String> normalCallBack;
+        public ResultAction<String> resultAction;
 
 
-        public ConsumeApple(String appleName, NormalCallBack<String> normalCallBack) {
+        public ConsumeApple(String appleName, ResultAction<String> resultAction) {
             this.appleName = appleName;
-            this.normalCallBack = normalCallBack;
+            this.resultAction = resultAction;
 
         }
 
@@ -99,7 +99,7 @@ public class Basket {
                         Thread.sleep(1000);
                         //loadingTasks.remove(appleName);
 
-                        normalCallBack.callBack(appleName);
+                        resultAction.action(appleName);
 
                     } catch (InterruptedException e) {
                         e.printStackTrace();

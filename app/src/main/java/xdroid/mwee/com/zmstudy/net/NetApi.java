@@ -6,16 +6,14 @@ import com.mwee.android.sqlite.base.ClientMetaUtil;
 import java.util.HashMap;
 
 import xdroid.mwee.com.mwbase.net.OkHttpUtils;
-import xdroid.mwee.com.mwbase.net.callback.Callback;
 import xdroid.mwee.com.zmstudy.model.BindResponse;
-import xdroid.mwee.com.zmstudy.model.GankResults;
+import xdroid.mwee.com.zmstudy.model.bean.GankModel;
 import xdroid.mwee.com.zmstudy.model.GetDataResponse;
-import xdroid.mwee.com.zmstudy.model.KBAuthAddressReponse;
 
 
 public class NetApi {
 
-    public static void getGankData(String type, int pageSize, int pageNum, JsonCallback<GankResults> callback) {
+    public static void getGankData(String type, int pageSize, int pageNum, JsonCallback<GankModel> callback) {
         String url = UrlKit.getUrl(UrlKit.ACTION_DATA_RESULT);
         url = url.replace("{type}", type)
                 .replace("{number}", "" + pageSize)
@@ -42,11 +40,10 @@ public class NetApi {
         params.put("deviceId", "TM18184V00014");
         params.put("shopType", "1");
 
-        OkHttpUtils.post()
+       OkHttpUtils.post()
                 .url(url)
                 .params(params)
-                .build()
-                .execute(callback);
+                .build().execute(callback);
     }
 
     /**
@@ -66,6 +63,5 @@ public class NetApi {
                 .build()
                 .execute(callback);
     }
-
 
 }

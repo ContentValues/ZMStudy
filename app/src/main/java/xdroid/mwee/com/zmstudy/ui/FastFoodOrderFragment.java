@@ -1,7 +1,6 @@
 package xdroid.mwee.com.zmstudy.ui;
 
 import android.content.DialogInterface;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
@@ -14,14 +13,13 @@ import java.util.List;
 
 import com.mwee.android.tools.ButtonClickTimer;
 
-import xdroid.mwee.com.mwcommon.base.XLazyFragment;
+import xdroid.mwee.com.mwcommon.base.BaseFragment;
 import xdroid.mwee.com.mwcommon.callback.ResultCallback;
 import xdroid.mwee.com.mwcommon.callback.SimpleCallback;
 import xdroid.mwee.com.mwcommon.xrecyclerview.XRecyclerView;
 import xdroid.mwee.com.mwcommon.xrecyclerview.divider.HorizontalDividerItemDecoration;
 import xdroid.mwee.com.zmstudy.R;
 import xdroid.mwee.com.zmstudy.adapter.FastFoodOrderApapter;
-import xdroid.mwee.com.zmstudy.business.PrintBillUtil;
 import xdroid.mwee.com.zmstudy.model.menu.MenuItem;
 import xdroid.mwee.com.zmstudy.model.order.OrderCache;
 import xdroid.mwee.com.zmstudy.processor.BusDataProcessor;
@@ -30,19 +28,28 @@ import xdroid.mwee.com.zmstudy.processor.BusDataProcessor;
  * Created by zhangmin on 2018/6/29.
  */
 
-public class FastFoodOrderFragment extends XLazyFragment implements View.OnClickListener {
+public class FastFoodOrderFragment extends BaseFragment implements View.OnClickListener {
 
     private FastFoodOrderApapter fastFoodOrderApapter;
     private OrderCache orderCache;
+    private XRecyclerView mMenuOrderRecyclerView;
 
     public static FastFoodOrderFragment newInstance() {
         return new FastFoodOrderFragment();
     }
 
     @Override
-    public void initData(Bundle savedInstanceState) {
+    public void initView(View v) {
 
-        XRecyclerView mMenuOrderRecyclerView = findViewById(R.id.mMenuOrderRecyclerView);
+        mMenuOrderRecyclerView = v.findViewById(R.id.mMenuOrderRecyclerView);
+        v.findViewById(R.id.tvOrderToCenter).setOnClickListener(this);
+        v.findViewById(R.id.tvPackOrder).setOnClickListener(this);
+        v.findViewById(R.id.tvPrinterPre).setOnClickListener(this);
+    }
+
+    @Override
+    public void initData() {
+        super.initData();
         mMenuOrderRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mMenuOrderRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(getContext()).margin(1).color(R.color.colorPrimary).build());
         fastFoodOrderApapter = new FastFoodOrderApapter(getContext());
@@ -69,9 +76,7 @@ public class FastFoodOrderFragment extends XLazyFragment implements View.OnClick
             }
         });
 
-        findViewById(R.id.tvOrderToCenter).setOnClickListener(this);
-        findViewById(R.id.tvPackOrder).setOnClickListener(this);
-        findViewById(R.id.tvPrinterPre).setOnClickListener(this);
+
     }
 
     @Override

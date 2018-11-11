@@ -24,4 +24,24 @@ dependencies {
     implementation project(':mwsqlite')
     //implementation project(path: ':posdinnerprinter')
     testImplementation 'junit:junit:4.12'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.2'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.2'
+    // Optional, if you use support library fragments:
+    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.2'
+
+    //implementation 'com.jakewharton.rxbinding3:rxbinding:3.0.0-alpha1'
+   /* implementation 'com.jakewharton.rxbinding3:rxbinding-core:3.0.0-alpha1'
+    implementation 'com.jakewharton.rxbinding3:rxbinding-appcompat:3.0.0-alpha1'
+    implementation 'com.jakewharton.rxbinding3:rxbinding-drawerlayout:3.0.0-alpha1'
+    implementation 'com.jakewharton.rxbinding3:rxbinding-leanback:3.0.0-alpha1'
+    implementation 'com.jakewharton.rxbinding3:rxbinding-recyclerview:3.0.0-alpha1'
+    implementation 'com.jakewharton.rxbinding3:rxbinding-slidingpanelayout:3.0.0-alpha1'
+    implementation 'com.jakewharton.rxbinding3:rxbinding-swiperefreshlayout:3.0.0-alpha1'
+    implementation 'com.jakewharton.rxbinding3:rxbinding-viewpager:3.0.0-alpha1'*/
+
+    /*rotrofit*/
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
 }

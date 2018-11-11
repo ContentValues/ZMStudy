@@ -14,4 +14,10 @@ public class APPConfig {
      * 站点DB
      */
     //public final static String DB_CLIENT = "mwclient.sqlite";
+
+
+
+    public final static String SHOP_ID = "215530";
+
+
 }

@@ -8,13 +8,13 @@ import android.widget.ImageView;
 import xdroid.mwee.com.mwcommon.base.SimpleRecAdapter;
 import xdroid.mwee.com.mwcommon.imageloader.ILFactory;
 import xdroid.mwee.com.zmstudy.R;
-import xdroid.mwee.com.zmstudy.model.Item;
+import xdroid.mwee.com.zmstudy.model.bean.GankModel;
 
 /**
  * Created by zhangmin on 2018/6/19.
  */
 
-public class GirlAdapter extends SimpleRecAdapter<Item, GirlAdapter.ViewHolder> {
+public class GirlAdapter extends SimpleRecAdapter<GankModel.ItemBean, GirlAdapter.ViewHolder> {
 
     public GirlAdapter(Context context) {
         super(context);
@@ -32,12 +32,18 @@ public class GirlAdapter extends SimpleRecAdapter<Item, GirlAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Item item = data.get(position);
-        ILFactory.getLoader().loadNet(holder.iv_girl, item.getUrl(), null);
+        GankModel.ItemBean itemBean = data.get(position);
+        ILFactory.getLoader().loadNet(holder.iv_girl, itemBean.getUrl(), null);
+        /*ILFactory.getLoader().loadNet(context, item.getUrl(), null, new LoadCallback() {
+            @Override
+            public void onLoadReady(Bitmap bitmap) {
+                holder.iv_girl.setImageBitmap(bitmap);
+            }
+        });*/
         holder.iv_girl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getItemClick().onItemClick(position,item,-1);
+                getItemClick().onItemClick(position, itemBean, -1);
             }
         });
     }

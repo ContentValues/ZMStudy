@@ -1,9 +1,12 @@
 package com.mwee.android.tools;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.Looper;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
@@ -13,6 +16,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -384,5 +388,86 @@ public class FileUtil {
             }
         }
         return file;
+    }
+
+    /**
+     * 复制文件
+     *
+     * @param filename 文件名
+     * @param bytes    数据
+     */
+    public static void copy(String filename, byte[] bytes) {
+        try {
+            //如果手机已插入sd卡,且app具有读写sd卡的权限
+            if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                FileOutputStream output = new FileOutputStream(filename);
+                output.write(bytes);
+                output.flush();
+                output.close();
+            } else {
+                //Log.i(TAG, "copy:fail, " + filename);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
+     * 复制文件
+     *
+     * @param file  文件名
+     * @param bytes 数据
+     */
+    public static void copy(File file, byte[] bytes) {
+        try {
+            //如果手机已插入sd卡,且app具有读写sd卡的权限
+            if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                FileOutputStream output = new FileOutputStream(file);
+                output.write(bytes);
+                output.flush();
+                output.close();
+            } else {
+                //Log.i(TAG, "copy:fail, " + filename);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveImageToGallery(Context context, Bitmap bmp) {
+        // 首先保存图片
+       /* File file = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsoluteFile();//注意小米手机必须这样获得public绝对路径
+        String fileName = ”新建文件夹”;
+        File appDir = new File(file ,fileName);
+        if (!appDir.exists()) {
+            appDir.mkdirs();
+        }*/
+        String fileName = "hello";
+        File appDir = new File(context.getCacheDir() ,fileName);
+        if (!appDir.exists()) {
+            appDir.mkdirs();
+        }
+        File currentFile = new File(appDir, System.currentTimeMillis() + ".png");
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(currentFile);
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            fos.flush();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fos != null) {
+                    fos.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
+                Uri.fromFile(new File(currentFile.getPath()))));
     }
 }

@@ -16,14 +16,18 @@ import android.view.ViewGroup;
 
 import com.mwee.android.tools.LogUtil;
 import com.mwee.android.tools.base.BaseConfig;
+import com.trello.rxlifecycle.components.support.RxFragment;
 
 /**
  * Created by zhangmin on 2018/6/19.
  */
 
-public class LifeCircleFragment extends Fragment implements Host {
+public class LifecycleFragment extends RxFragment implements Host {
 
     private long timestamp;
+
+    public final static int TARGET_REQUEST = 0X323;
+    public String TAG = this.getClass().getName();
 
     @Override
     public void onAttach(Context context) {
@@ -200,8 +204,8 @@ public class LifeCircleFragment extends Fragment implements Host {
     }
 
     @Override
-    public BaseActivity getActivityWithinHost() {
-        return (BaseActivity) getActivity();
+    public LifecycleActivity getActivityWithinHost() {
+        return (LifecycleActivity) getActivity();
     }
 
     @Override

@@ -100,7 +100,6 @@ public abstract class EncryptJsonCallBack<T> extends Callback<T> {
                     , ClientMetaUtil.getSettingsValueByKey(META.TOKEN)
                     , ClientMetaUtil.getSettingsValueByKey(META.SEED)
                     , response.body().string());
-            LogUtil.log("202385", result);
         } catch (Exception e) {
             e.printStackTrace();
         }

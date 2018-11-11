@@ -3,11 +3,11 @@ package xdroid.mwee.com.zmstudy.model.menu;
 import android.text.TextUtils;
 import com.mwee.android.tools.DateUtil;
 import com.mwee.android.tools.LogUtil;
-import com.mwee.android.tools.UUIDUtil;
 import com.mwee.android.tools.base.BusinessBean;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
 import com.mwee.android.tools.ListUtil;
 
@@ -53,7 +53,7 @@ public class NoteItemModel extends BusinessBean {
     public int fiIsShow = 0;
 
     public NoteItemModel() {
-        this.uniq = UUIDUtil.optUUID();
+        this.uniq = UUID.randomUUID().toString();
         this.createTime = DateUtil.getCurrentTime();
     }
 

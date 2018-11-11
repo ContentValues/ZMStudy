@@ -8,6 +8,7 @@ import android.util.Pair;
 import com.alibaba.fastjson.JSONObject;
 import com.mwee.android.sqlite.inject.ColumnInf;
 import com.mwee.android.sqlite.inject.TableInf;
+import com.mwee.android.tools.ListUtil;
 import com.mwee.android.tools.LogUtil;
 
 import java.lang.reflect.Field;
@@ -395,7 +396,7 @@ public class DBSimpleUtil {
             }
         }
         final String sql = sqlIn;
-        return DBManager.getInstance(dbName).executeQuery(new IDBOperate<List<T>>() {
+        List<T> modules = DBManager.getInstance(dbName).executeQuery(new IDBOperate<List<T>>() {
             @Override
             public List<T> doJob(SQLiteDatabase db) {
                 List<T> modelList = null;
@@ -406,7 +407,7 @@ public class DBSimpleUtil {
                         //如果传入的sql为空,则手动拼接一个
                         if (TextUtils.isEmpty(sql)) {
                             realSql = "select * from " + DBModel.getTableName(clz);
-                        } else if (sql.startsWith("where") || sql.startsWith("WHERE") || sql.startsWith("Where")) {
+                        } else if (sql.equalsIgnoreCase("where")) {
                             realSql = "select * from " + DBModel.getTableName(clz) + " " + sql;
                         } else {
                             realSql = sql;
@@ -445,6 +446,8 @@ public class DBSimpleUtil {
                 return modelList;
             }
         });
+
+        return !ListUtil.isEmpty(modules) ? modules : new ArrayList<>(0);
     }
 
     /**

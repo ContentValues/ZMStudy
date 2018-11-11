@@ -8,7 +8,7 @@ import com.mwee.android.tools.GlobalCache;
 
 import java.lang.ref.WeakReference;
 
-import xdroid.mwee.com.mwcommon.base.BaseActivity;
+import xdroid.mwee.com.mwcommon.base.LifecycleActivity;
 import xdroid.mwee.com.mwcommon.base.BaseFragment;
 
 
@@ -162,7 +162,7 @@ public class DialogParamBundle {
          * @param activity WaiterBaseActivity
          * @return Builder
          */
-        public Builder setActivity(BaseActivity activity) {
+        public Builder setActivity(LifecycleActivity activity) {
             if (activity != null && !activity.isFinishing() && !activity.isDestroyed()) {
                 fragmentManager = activity.getSupportFragmentManager();
             }

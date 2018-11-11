@@ -20,18 +20,19 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import com.mwee.android.tools.LogUtil;
 import com.mwee.android.tools.base.BaseConfig;
+import com.trello.rxlifecycle.components.support.RxDialogFragment;
 
 import java.lang.reflect.Field;
 
 import xdroid.mwee.com.mwcommon.R;
-import xdroid.mwee.com.mwcommon.base.BaseActivity;
+import xdroid.mwee.com.mwcommon.base.LifecycleActivity;
 import xdroid.mwee.com.mwcommon.base.FragmentController;
 import xdroid.mwee.com.mwcommon.base.Host;
 
 /**
  * BaseDialogFragment
  */
-public class BaseDialogFragment extends DialogFragment implements Host {
+public class BaseDialogFragment extends RxDialogFragment implements Host {
 
     public static final String ARGUMENTS_KEY = "BaseDialogFragment";
     public boolean bIsBackable = true;// 是否back取消
@@ -317,8 +318,8 @@ public class BaseDialogFragment extends DialogFragment implements Host {
     }
 
     @Override
-    public BaseActivity getActivityWithinHost() {
-        return (BaseActivity) getActivity();
+    public LifecycleActivity getActivityWithinHost() {
+        return (LifecycleActivity) getActivity();
     }
 
     @Override

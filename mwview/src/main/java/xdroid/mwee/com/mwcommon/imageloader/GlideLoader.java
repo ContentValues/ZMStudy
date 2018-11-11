@@ -2,9 +2,9 @@ package xdroid.mwee.com.mwcommon.imageloader;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-
 import com.bumptech.glide.DrawableTypeRequest;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
@@ -12,8 +12,12 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
-
+import com.mwee.android.tools.FileUtil;
 import java.io.File;
+import rx.Observable;
+import rx.Subscriber;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 public class GlideLoader implements ILoader {
 
@@ -38,7 +42,6 @@ public class GlideLoader implements ILoader {
         if (options.loadErrorResId != Options.RES_NONE) {
             request.error(options.loadErrorResId);
         }
-
         wrapScaleType(request, options)
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .crossFade()
@@ -56,7 +59,23 @@ public class GlideLoader implements ILoader {
                     public void onResourceReady(GlideBitmapDrawable resource, GlideAnimation<? super GlideBitmapDrawable> glideAnimation) {
                         if (resource != null && resource.getBitmap() != null) {
                             if (callback != null) {
-                                callback.onLoadReady(resource.getBitmap());
+                                Bitmap bitmap = resource.getBitmap();
+                                callback.onLoadReady(bitmap);
+
+                               /* Observable.create(new Observable.OnSubscribe<Bitmap>() {
+                                    @Override
+                                    public void call(Subscriber<? super Bitmap> subscriber) {
+                                        subscriber.onNext(bitmap);
+                                        subscriber.onCompleted();
+                                    }
+                                }).subscribeOn(Schedulers.io()).subscribe(new Action1<Bitmap>() {
+                                    @Override
+                                    public void call(Bitmap bitmap) {
+
+                                        FileUtil.saveImageToGallery(context, bitmap);
+                                    }
+                                });*/
+                                /*FileUtil.copy(new File(context.getCacheDir(), "zhangmin"), baos.toByteArray());*/
                             }
                         }
                     }

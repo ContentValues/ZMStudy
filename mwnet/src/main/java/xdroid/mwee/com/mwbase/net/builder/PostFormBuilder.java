@@ -15,7 +15,8 @@ public class PostFormBuilder extends OkHttpRequestBuilder<PostFormBuilder> imple
 
     @Override
     public RequestCall build() {
-        RequestCall requestCall = new PostFormRequest(url, tag, params, headers, files, id).build();
+        PostFormRequest request = new PostFormRequest(url, tag, params, headers, files, id);
+        RequestCall requestCall = request.build();
         return requestCall;
     }
 
@@ -79,7 +80,6 @@ public class PostFormBuilder extends OkHttpRequestBuilder<PostFormBuilder> imple
 //        map.put("Connection","close");
 //        return map;
 //    }
-
 
 
 }

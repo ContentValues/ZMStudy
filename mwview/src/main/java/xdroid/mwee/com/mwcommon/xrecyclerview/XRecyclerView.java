@@ -12,6 +12,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.lang.ref.WeakReference;
 import java.util.Collections;
 import java.util.List;
 
@@ -37,7 +38,6 @@ public class XRecyclerView extends RecyclerView {
 
     XRecyclerAdapter adapter;
 
-    StateCallback stateCallback;
     OnRefreshAndLoadMoreListener onRefreshAndLoadMoreListener;
 
     public static final int LOAD_MORE_ITEM_SLOP = 2;
@@ -129,12 +129,21 @@ public class XRecyclerView extends RecyclerView {
 
     }
 
+    //StateCallback stateCallback;
+    //todo 注意点 弱引用防止内存泄漏 有没有其他影响不得而知
+    private WeakReference<StateCallback> reference;
+
     public XRecyclerView stateCallback(StateCallback stateCallback) {
-        this.stateCallback = stateCallback;
+        reference = new WeakReference<>(stateCallback);
+        //this.stateCallback = stateCallback;
         return this;
     }
 
     public StateCallback getStateCallback() {
+        StateCallback stateCallback = null;
+        if (reference != null) {
+            stateCallback = reference.get();
+        }
         return stateCallback;
     }
 

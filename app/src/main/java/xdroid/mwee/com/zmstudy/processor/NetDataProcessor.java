@@ -26,13 +26,21 @@ import xdroid.mwee.com.zmstudy.net.NetApi;
 public class NetDataProcessor implements INetInterface {
 
 
-    private final static NetDataProcessor processor = new NetDataProcessor();
+    private volatile static NetDataProcessor processor;
 
+    //构造方法私有
     private NetDataProcessor() {
-
     }
 
+    //获取单例
     public static NetDataProcessor getInstance() {
+        if (processor == null) {
+            synchronized (NetDataProcessor.class) {
+                if (processor == null) {
+                    processor = new NetDataProcessor();
+                }
+            }
+        }
         return processor;
     }
 
@@ -51,7 +59,7 @@ public class NetDataProcessor implements INetInterface {
             public void onResponse(BindResponse response, int id) {
 
                 String token = EncryptUtil.MD5Purity(response.data.fstoken + "TM18184V00014");
-                AppConfiguration.saveTokenSeed("202385", token, response.data.fsseed);
+                AppConfiguration.saveTokenSeed(APPConfig.SHOP_ID, token, response.data.fsseed);
 
                 NetApi.downLoad(new EncryptJsonCallBack<GetDataResponse>() {
                     @Override

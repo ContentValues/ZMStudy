@@ -2,10 +2,10 @@ package xdroid.mwee.com.zmstudy.model.menu;
 
 import com.mwee.android.tools.DateUtil;
 import com.mwee.android.tools.LogUtil;
-import com.mwee.android.tools.UUIDUtil;
 import com.mwee.android.tools.base.BusinessBean;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 /**
  * MenuExtraItem
@@ -65,12 +65,6 @@ public class MenuExtraItem extends BusinessBean {
 
     public MenuExtraItem() {
 
-    }
-
-    public void selectedItem() {
-        this.selected = true;
-        this.uniq = UUIDUtil.optUUID();
-        this.createTime = DateUtil.getCurrentTime();
     }
 
     /**

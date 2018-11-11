@@ -23,7 +23,7 @@ public interface Host {
      *
      * @return BaseActivity
      */
-    BaseActivity getActivityWithinHost();
+    LifecycleActivity getActivityWithinHost();
 
     /**
      * 获取FragmentManager

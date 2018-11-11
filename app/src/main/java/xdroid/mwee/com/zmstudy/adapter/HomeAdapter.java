@@ -12,13 +12,13 @@ import android.widget.TextView;
 import xdroid.mwee.com.mwcommon.base.SimpleRecAdapter;
 import xdroid.mwee.com.mwcommon.imageloader.ILFactory;
 import xdroid.mwee.com.zmstudy.R;
-import xdroid.mwee.com.zmstudy.model.Item;
+import xdroid.mwee.com.zmstudy.model.bean.GankModel;
 
 /**
  * Created by zhangmin on 2018/4/9.
  */
 
-public class HomeAdapter extends SimpleRecAdapter<Item, HomeAdapter.ViewHolder> {
+public class HomeAdapter extends SimpleRecAdapter<GankModel.ItemBean, HomeAdapter.ViewHolder> {
 
     public static final int TAG_VIEW = 0;
 
@@ -39,15 +39,15 @@ public class HomeAdapter extends SimpleRecAdapter<Item, HomeAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-        final Item item = data.get(position);
+        final GankModel.ItemBean itemBean = data.get(position);
 
-        String type = item.getType();
+        String type = itemBean.getType();
         switch (type) {
             case "休息视频":
                 holder.rlMessage.setVisibility(View.VISIBLE);
                 holder.ivPart.setVisibility(View.GONE);
                 holder.ivVedio.setVisibility(View.VISIBLE);
-                holder.tvItem.setText(item.getDesc());
+                holder.tvItem.setText(itemBean.getDesc());
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -62,7 +62,7 @@ public class HomeAdapter extends SimpleRecAdapter<Item, HomeAdapter.ViewHolder> 
                 holder.ivPart.setVisibility(View.VISIBLE);
                 holder.ivVedio.setVisibility(View.GONE);
 
-                ILFactory.getLoader().loadNet(holder.ivPart, item.getUrl(), null);
+                ILFactory.getLoader().loadNet(holder.ivPart, itemBean.getUrl(), null);
                 holder.tvItem.setText("瞧瞧妹纸，扩展扩展视野......");
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -77,7 +77,7 @@ public class HomeAdapter extends SimpleRecAdapter<Item, HomeAdapter.ViewHolder> 
                 holder.rlMessage.setVisibility(View.VISIBLE);
                 holder.ivPart.setVisibility(View.GONE);
                 holder.ivVedio.setVisibility(View.GONE);
-                holder.tvItem.setText(item.getDesc());
+                holder.tvItem.setText(itemBean.getDesc());
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -89,7 +89,7 @@ public class HomeAdapter extends SimpleRecAdapter<Item, HomeAdapter.ViewHolder> 
                 break;
         }
         Uri uri = null;
-        switch (item.getType()) {
+        switch (itemBean.getType()) {
             case "Android":
                 holder.ivType.setImageResource(R.mipmap.android_icon);
                 break;
@@ -104,7 +104,7 @@ public class HomeAdapter extends SimpleRecAdapter<Item, HomeAdapter.ViewHolder> 
                 break;
         }
 
-        String author = item.getWho();
+        String author = itemBean.getWho();
         if (author != null) {
             holder.tvAuthor.setText(author);
             holder.tvAuthor.setTextColor(Color.parseColor("#87000000"));
@@ -112,7 +112,7 @@ public class HomeAdapter extends SimpleRecAdapter<Item, HomeAdapter.ViewHolder> 
             holder.tvAuthor.setText("");
         }
 
-        holder.tvTime.setText(item.getCreatedAt());
+        holder.tvTime.setText(itemBean.getCreatedAt());
 
         holder.tvType.setText(type);
 
@@ -120,7 +120,7 @@ public class HomeAdapter extends SimpleRecAdapter<Item, HomeAdapter.ViewHolder> 
             @Override
             public void onClick(View v) {
                 if (getSimpleItemClick() != null) {
-                    getSimpleItemClick().onItemClick(position, item, TAG_VIEW, holder);
+                    getSimpleItemClick().onItemClick(position, itemBean, TAG_VIEW, holder);
                 }
             }
         });

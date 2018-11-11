@@ -134,23 +134,7 @@ public class RxJavaTestActitviy extends AppCompatActivity {
                 Log.d(TAG, "onNext---->distinct-->" + integer);
             }
         });*/
-/*
-        Observable.just(1, 2, 3, 2, 3).ignoreElements().subscribe(new Subscriber<Integer>() {
-            @Override
-            public void onCompleted() {
-                Log.d(TAG, "onCompleted---->distinct-->");
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Log.d(TAG, "onError---->distinct-->");
-            }
-
-            @Override
-            public void onNext(Integer integer) {
-                Log.d(TAG, "onNext---->distinct-->" + integer);
-            }
-        });*/
+/*l*/
 
 
     }

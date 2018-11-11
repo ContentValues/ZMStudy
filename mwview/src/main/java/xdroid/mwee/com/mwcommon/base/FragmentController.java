@@ -50,7 +50,7 @@ public class FragmentController {
         }
     }
 
-    public static void addFragment(BaseActivity activity, BaseFragment fragment) {
+    public static void addFragment(LifecycleActivity activity, BaseFragment fragment) {
         addFragment(activity.getSupportFragmentManager(), fragment, fragment.TAG, android.R.id.content, -1, -1);
     }
 
@@ -106,13 +106,13 @@ public class FragmentController {
         }
     }
 
-    public static void initFragment(BaseActivity baseActivity, Fragment fragment, String tag) {
-        initFragment(baseActivity, fragment, tag, android.R.id.content);
+    public static void initFragment(LifecycleActivity lifecycleActivity, Fragment fragment, String tag) {
+        initFragment(lifecycleActivity, fragment, tag, android.R.id.content);
     }
 
-    public static void initFragment(BaseActivity baseActivity, Fragment fragment, String tag, int postion) {
-        if (baseActivity != null && !baseActivity.isFinishing() && !baseActivity.isDestroyed()) {
-            FragmentManager fragmentManager = baseActivity.getSupportFragmentManager();
+    public static void initFragment(LifecycleActivity lifecycleActivity, Fragment fragment, String tag, int postion) {
+        if (lifecycleActivity != null && !lifecycleActivity.isFinishing() && !lifecycleActivity.isDestroyed()) {
+            FragmentManager fragmentManager = lifecycleActivity.getSupportFragmentManager();
             FragmentTransaction ft = fragmentManager.beginTransaction();
 
             ft.replace(postion, fragment, tag);

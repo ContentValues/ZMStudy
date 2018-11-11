@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import xdroid.mwee.com.mwcommon.base.SimpleRecAdapter;
 import xdroid.mwee.com.mwcommon.callback.ItemCallback;
 import xdroid.mwee.com.zmstudy.adapter.GirlAdapter;
-import xdroid.mwee.com.zmstudy.model.Item;
+import xdroid.mwee.com.zmstudy.model.bean.GankModel;
 
 /**
  * Created by zhangmin on 2018/4/9.
@@ -24,9 +24,9 @@ public class GirlFragment extends BasePagerFragment {
     public SimpleRecAdapter getAdapter() {
         if (girlAdapter == null) {
             girlAdapter = new GirlAdapter(getContext());
-            girlAdapter.setItemClick(new ItemCallback<Item>() {
+            girlAdapter.setItemClick(new ItemCallback<GankModel.ItemBean>() {
                 @Override
-                public void onItemClick(int position, Item model, int tag) {
+                public void onItemClick(int position, GankModel.ItemBean model, int tag) {
                     super.onItemClick(position, model, tag);
                     WebActivity.launch(getActivity(), model.getUrl(), model.getDesc());
                 }

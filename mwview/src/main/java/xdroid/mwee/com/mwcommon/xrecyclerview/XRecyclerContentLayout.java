@@ -6,6 +6,11 @@ import android.graphics.Color;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.AttributeSet;
 
+import com.mwee.android.tools.DateUtil;
+import com.mwee.android.tools.LogUtil;
+
+import java.lang.ref.WeakReference;
+
 import xdroid.mwee.com.mwcommon.R;
 import xdroid.mwee.com.mwcommon.view.XStateController;
 
@@ -61,6 +66,7 @@ public class XRecyclerContentLayout extends XStateController implements XRecycle
         inflate(context, R.layout.x_view_recycler_content_layout, this);
     }
 
+
     @Override
     protected void onFinishInflate() {
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
@@ -73,6 +79,10 @@ public class XRecyclerContentLayout extends XStateController implements XRecycle
                 R.color.x_yellow,
                 R.color.x_green
         );
+
+
+        //todo 有内存泄漏问题
+        //swipeRefreshLayout.setOnRefreshListener(new SwipRefreshOnListener(recyclerView));
         swipeRefreshLayout.setOnRefreshListener(this);
         if (padding != -1) {
             recyclerView.setPadding(padding, padding, padding, padding);
@@ -95,8 +105,11 @@ public class XRecyclerContentLayout extends XStateController implements XRecycle
         super.onFinishInflate();
     }
 
-    @Override
+   /* @Override
     public void setDisplayState(int displayState) {
+        if(swipeRefreshLayout.isRefreshing()){
+            refreshState(false);
+        }
         XRecyclerAdapter adapter = recyclerView.getAdapter();
         if (adapter != null && adapter.getItemCount() > 0) {
             super.setDisplayState(STATE_CONTENT);
@@ -111,22 +124,22 @@ public class XRecyclerContentLayout extends XStateController implements XRecycle
             return;
         }
         setDisplayState(state);
-    }
+    }*/
 
-    @Override
+   /* @Override
     public void showEmpty() {
         setDisplayState(STATE_EMPTY, true);
-    }
+    }*/
 
-    @Override
+   /* @Override
     public void showError() {
         setDisplayState(STATE_ERROR, true);
-    }
+    }*/
 
-    @Override
+   /* @Override
     public void showLoading() {
         setDisplayState(STATE_LOADING, true);
-    }
+    }*/
 
     @Override
     public void notifyEmpty() {
@@ -150,6 +163,7 @@ public class XRecyclerContentLayout extends XStateController implements XRecycle
         swipeRefreshLayout.setEnabled(isEnabled);
     }
 
+
     @Override
     public void onRefresh() {
         recyclerView.onRefresh();
@@ -162,4 +176,35 @@ public class XRecyclerContentLayout extends XStateController implements XRecycle
     public SwipeRefreshLayout getSwipeRefreshLayout() {
         return swipeRefreshLayout;
     }
+
+
+   /* @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        LogUtil.log("FragmentLifeCircle " + this.getClass().getSimpleName() + " onDetachedFromWindow " + DateUtil.getCurrentTime());
+        if (swipeRefreshLayout != null) {
+            swipeRefreshLayout.setOnRefreshListener(null);
+        }
+    }*/
+
+    /**
+     * todo 注意点 解决swipeRefreshLayout.setOnRefreshListener 内存泄漏的问题
+     * <p>
+     * swipeRefreshLayout.mListener 持有了XRecyclerContentLayout对象 导致内存泄漏
+     */
+    /*static class SwipRefreshOnListener implements SwipeRefreshLayout.OnRefreshListener {
+
+        WeakReference<XRecyclerView> weakReference;
+
+        public SwipRefreshOnListener(XRecyclerView xRecyclerView) {
+            weakReference = new WeakReference<XRecyclerView>(xRecyclerView);
+        }
+
+        @Override
+        public void onRefresh() {
+            if (weakReference != null) {
+                weakReference.get().onRefresh();
+            }
+        }
+    }*/
 }

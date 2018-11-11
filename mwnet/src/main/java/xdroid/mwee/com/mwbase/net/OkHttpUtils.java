@@ -1,9 +1,9 @@
 package xdroid.mwee.com.mwbase.net;
+import android.os.Looper;
 import com.alibaba.fastjson.JSON;
 import com.mwee.android.tools.LogUtil;
 import java.io.IOException;
 import java.util.concurrent.Executor;
-
 import xdroid.mwee.com.mwbase.net.builder.GetBuilder;
 import xdroid.mwee.com.mwbase.net.builder.HeadBuilder;
 import xdroid.mwee.com.mwbase.net.builder.OtherRequestBuilder;
@@ -105,17 +105,76 @@ public class OkHttpUtils {
             LogUtil.logNET(taskKey, "URL=" + url);
             LogUtil.logNET(taskKey, "RequestStr is :" + requestStr);
         }
-        //加密 请求
+
+
+
+
+        if (Looper.getMainLooper() == Looper.myLooper()) {
+            LogUtil.logNET("enqueue onResponse 当前请求运行在主线中" + requestCall.getCall().request().url());
+        } else {
+            LogUtil.logNET("enqueue onResponse 当前请求运行在子线中" + requestCall.getCall().request().url());
+        }
+
+        //同步请求
+      /*  try {
+            Response response = requestCall.getCall().execute();
+
+            if (Looper.getMainLooper() == Looper.myLooper()) {
+                LogUtil.logNET("enqueue2 onResponse 当前请求运行在主线中" + requestCall.getCall().request().url());
+            } else {
+                LogUtil.logNET("enqueue2 onResponse 当前请求运行在子线中" + requestCall.getCall().request().url());
+            }
+
+
+            if (requestCall.getCall().isCanceled()) {
+                sendFailResultCallback(requestCall.getCall(), new IOException("Canceled"), finalCallback, id);
+            } else {
+                //callback.onResponse(requestCall.getCall(), response);
+                if (!finalCallback.validateReponse(response, id)) {
+                    sendFailResultCallback(requestCall.getCall(), new IOException("request failed , reponse's code is : " + response.code()), finalCallback, id);
+                    return;
+                }
+                Object o = null;
+                try {
+                    o = finalCallback.parseNetworkResponse(response, id);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                //解密数据
+                String taskKey2 = "MWNET" + "_" + String.valueOf(System.currentTimeMillis());
+                if (LogUtil.SHOW) {
+                    LogUtil.logNET(taskKey2, "response=" + JSON.toJSONString(o));
+                }
+                sendSuccessResultCallback(o, finalCallback, id);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            sendFailResultCallback(requestCall.getCall(), e, finalCallback, id);
+        }*/
+
+
 
         //异步线程执行耗时操作
         requestCall.getCall().enqueue(new okhttp3.Callback() {
             @Override
             public void onFailure(Call call, final IOException e) {
+                if (Looper.getMainLooper() == Looper.myLooper()) {
+                    LogUtil.logNET("enqueue onFailure 当前请求运行在主线中" + call.request().url());
+                } else {
+                    LogUtil.logNET("enqueue onFailure 当前请求运行在子线中" + call.request().url());
+                }
                 sendFailResultCallback(call, e, finalCallback, id);
             }
 
             @Override
             public void onResponse(final Call call, final Response response) {
+
+                if (Looper.getMainLooper() == Looper.myLooper()) {
+                    LogUtil.logNET("enqueue onResponse 当前请求运行在主线中" + call.request().url());
+                } else {
+                    LogUtil.logNET("enqueue onResponse 当前请求运行在子线中" + call.request().url());
+                }
 
                 //异步线程调用
 
@@ -133,7 +192,6 @@ public class OkHttpUtils {
                     Object o = finalCallback.parseNetworkResponse(response, id);
 
                     //解密数据
-
                     String taskKey = "MWNET" + "_" + String.valueOf(System.currentTimeMillis());
                     if (LogUtil.SHOW) {
                         LogUtil.logNET(taskKey, "response=" + JSON.toJSONString(o));
@@ -157,6 +215,14 @@ public class OkHttpUtils {
         mPlatform.execute(new Runnable() {
             @Override
             public void run() {
+
+                if (Looper.getMainLooper() == Looper.myLooper()) {
+                    LogUtil.logNET("切换线程 sendFailResultCallback 当前请求运行在主线中");
+                } else {
+                    LogUtil.logNET("切换线程 sendFailResultCallback 当前请求运行在子线中");
+                }
+
+
                 callback.onError(call, e, id);
                 callback.onAfter(id);
             }
@@ -173,6 +239,13 @@ public class OkHttpUtils {
         mPlatform.execute(new Runnable() {
             @Override
             public void run() {
+
+                if (Looper.getMainLooper() == Looper.myLooper()) {
+                    LogUtil.logNET("切换线程 sendSuccessResultCallback 当前请求运行在主线中");
+                } else {
+                    LogUtil.logNET("切换线程 sendSuccessResultCallback 当前请求运行在子线中");
+                }
+
                 callback.onResponse(object, id);
                 callback.onAfter(id);
             }

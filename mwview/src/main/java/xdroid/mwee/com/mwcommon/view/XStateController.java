@@ -10,6 +10,8 @@ import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+
 import xdroid.mwee.com.mwcommon.R;
 
 public class XStateController extends FrameLayout {
@@ -137,7 +139,8 @@ public class XStateController extends FrameLayout {
 
             if (oldState != -1) {
                 getStateChangeListener().onStateChange(oldState, newState);
-                getStateChangeListener().animationState(getDisplayView(oldState), enterView);
+                getStateChangeListener().animationState(getDisplayView(oldState), enterView, oldState == STATE_CONTENT && newState == STATE_LOADING);
+
             } else {
                 enterView.setVisibility(VISIBLE);
                 enterView.setAlpha(1);
@@ -294,7 +297,12 @@ public class XStateController extends FrameLayout {
     public interface OnStateChangeListener {
         void onStateChange(int oldState, int newState);
 
-        void animationState(View exitView, View enterView);
+        /**
+         * @param exitView
+         * @param enterView
+         * @param exitViewVisibility 退出的View 是否可见 目前的处理是contentView显示loadingView的时候 contentView可见
+         */
+        void animationState(View exitView, View enterView, boolean exitViewVisibility);
     }
 
     public static class SimpleStateChangeListener implements OnStateChangeListener {
@@ -305,7 +313,7 @@ public class XStateController extends FrameLayout {
         }
 
         @Override
-        public void animationState(final View exitView, final View enterView) {
+        public void animationState(final View exitView, final View enterView, boolean exitViewVisibility) {
             AnimatorSet set = new AnimatorSet();
             final ObjectAnimator enter = ObjectAnimator.ofFloat(enterView, View.ALPHA, 1f);
             ObjectAnimator exit = ObjectAnimator.ofFloat(exitView, View.ALPHA, 0f);
@@ -320,6 +328,7 @@ public class XStateController extends FrameLayout {
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     exitView.setAlpha(1);
+                    exitView.setVisibility(exitViewVisibility ? VISIBLE : GONE);
                     exitView.setVisibility(GONE);
                     checkView(enterView);
                 }

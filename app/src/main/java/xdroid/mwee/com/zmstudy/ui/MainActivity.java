@@ -1,4 +1,5 @@
 package xdroid.mwee.com.zmstudy.ui;
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -15,17 +16,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.LinkedBlockingQueue;
 
-import xdroid.mwee.com.mwcommon.base.XActivity;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import xdroid.mwee.com.mwcommon.base.BaseActivity;
 import xdroid.mwee.com.mwcommon.base.XFragmentAdapter;
 import xdroid.mwee.com.zmstudy.R;
 
-public class MainActivity extends XActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar;
 
     TabLayout tabLayout;
@@ -33,7 +33,7 @@ public class MainActivity extends XActivity implements NavigationView.OnNavigati
     ViewPager viewPager;
 
     private List<Fragment> fragmentList = new ArrayList<>();
-    private String[] titles = {"小帅哥", "妹子", "订单", "桌台","动画"};
+    private String[] titles = {"小帅哥", "妹子", "订单", "桌台", "动画"};
 
     private int[] pics = new int[]{R.mipmap.ios_icon, R.mipmap.js_icon, R.mipmap.other_icon, R.mipmap.android_icon, R.mipmap.js_icon};
     private DrawerLayout drawer_layout;
@@ -41,8 +41,7 @@ public class MainActivity extends XActivity implements NavigationView.OnNavigati
 
 
     @Override
-    public void initData(Bundle savedInstanceState) {
-
+    public void initView() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -58,6 +57,13 @@ public class MainActivity extends XActivity implements NavigationView.OnNavigati
 
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
+
+    }
+
+
+    @Override
+    public void initData(Bundle savedInstanceState) {
+        super.initData(savedInstanceState);
 
         fragmentList.add(HomeFragment.newInstance());
         fragmentList.add(GirlFragment.newInstance());
@@ -80,7 +86,6 @@ public class MainActivity extends XActivity implements NavigationView.OnNavigati
 
         setCustomIcon();
         setupDrawerSelectedListener();
-
       /*  for(int i=0;i<titles.length;i++){
             tabLayout.getTabAt(i).setText(titles[i]);
         }*/
@@ -213,4 +218,11 @@ public class MainActivity extends XActivity implements NavigationView.OnNavigati
         return super.onOptionsItemSelected(item);
     }
 
+
+    @Override
+    protected void onResume() {
+
+        System.out.println("哈哈哈--->"+Arrays.toString(fragmentList.toArray()));
+        super.onResume();
+    }
 }

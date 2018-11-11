@@ -11,6 +11,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:visibility="visible"
-        app:indicator="LineScale"
-        app:indicator_color="@color/colorPrimary" />
+        app:indicator="LineScalePulseOutRapid"
+        app:indicator_color="@color/colorAccent" />
 </FrameLayout>

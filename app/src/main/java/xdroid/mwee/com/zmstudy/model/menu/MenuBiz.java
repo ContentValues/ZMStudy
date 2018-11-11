@@ -3,12 +3,12 @@ package xdroid.mwee.com.zmstudy.model.menu;
 import android.text.TextUtils;
 
 import com.mwee.android.tools.DateUtil;
-import com.mwee.android.tools.UUIDUtil;
 import com.mwee.android.tools.base.BusinessBean;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import xdroid.mwee.com.model.util.db.AskDBModel;
 import xdroid.mwee.com.model.util.db.DiscountDBModel;
@@ -38,7 +38,7 @@ public class MenuBiz extends BusinessBean {
 
 
     /**
-     * 当前菜品的已点总价, 算入口参 {@link MenuItem#calcTotal(boolean)}
+     * 当前菜品的已点总价, 算入口参 {@link MenuItem#(boolean)}
      * 包括额外加的料的 用{@link MenuBiz#selectedPackageItem}
      */
     public BigDecimal totalPrice = BigDecimal.ZERO;
@@ -252,7 +252,7 @@ public class MenuBiz extends BusinessBean {
     }
 
     public void generateUniq() {
-        uniq = UUIDUtil.optUUID();
+        uniq = UUID.randomUUID().toString();
         if (TextUtils.isEmpty(createTime)) {
             createTime = DateUtil.getCurrentTime();
         }
