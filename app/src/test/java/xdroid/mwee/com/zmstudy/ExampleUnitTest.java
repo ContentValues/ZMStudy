@@ -2,7 +2,7 @@ package xdroid.mwee.com.zmstudy;
 
 import org.junit.Test;
 
-import xdroid.mwee.com.zmstudy.cute.rxjava.RxjavaObservalbeDemo;
+import xdroid.mwee.com.zmstudy.business.cute.rxjava.RxjavaObservalbeDemo;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

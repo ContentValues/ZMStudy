@@ -1,6 +1,7 @@
 package xdroid.mwee.com.zmstudy.model;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.mwee.android.tools.base.BaseResponse;
 
 /**
@@ -9,6 +10,7 @@ import com.mwee.android.tools.base.BaseResponse;
 
 public class GetDataResponse extends BaseResponse {
 
-    public String data = "";
+    //public String data = "";
+    public JSONObject data = new JSONObject();
     public String tag = "";
 }

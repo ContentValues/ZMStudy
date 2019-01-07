@@ -2,111 +2,19 @@ package xdroid.mwee.com.rxjavatest;
 
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-
-import xdroid.mwee.com.rxjavatest.proxy.Cinema;
-import xdroid.mwee.com.rxjavatest.proxy.GuitaiA;
-import xdroid.mwee.com.rxjavatest.proxy.MaiMaoTaiWine;
-import xdroid.mwee.com.rxjavatest.proxy.RealMovie;
-import xdroid.mwee.com.rxjavatest.proxy.SellWine;
 
 public class myClass {
 
     public static void main(String[] args) {
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("start thread do something");
-               /* while (true){
-                    System.out.println("start thread do something");
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }*/
-            }
-        }, myClass.class.getSimpleName() + "--Thread");
+        //test1();
 
-        thread.start();
-        System.out.println("thread.getId()-->" + thread.getId());
-        System.out.println("thread.getName()-->" + thread.getName());
-        System.out.println("thread.getPriority()-->" + thread.getPriority());
+        //test2();
 
-        System.out.println("thread.isAlive()-->" + thread.isAlive());
-        System.out.println("thread.isDaemon()-->" + thread.isDaemon());
-        System.out.println("thread.isInterrupted()-->" + thread.isInterrupted());
-
-        System.out.println("thread.activeCount()-->" + Thread.activeCount());
-        System.out.println("thread.currentThread().getName-->" + Thread.currentThread().getName());
-        System.out.println("thread.currentThread().getPriority-->" + Thread.currentThread().getPriority());
-
-      /*  test1();
-
-        test2();*/
-
-        //testFiled();\
-
-        //testProxy1();
-        //testProxy2();
+        testFiled();
     }
-
-
-    /**
-     * 动态代理
-     */
-    private static void testProxy2() {
-        /*MaiMaoTaiWine maiMaoTaiWine = new MaiMaoTaiWine();
-        GuitaiA guitaiA = new GuitaiA(maiMaoTaiWine);*/
-        /*SellWine dynamicProxy = (SellWine) Proxy.newProxyInstance(maiMaoTaiWine.getClass().getClassLoader(), maiMaoTaiWine.getClass().getInterfaces(), guitaiA);
-        dynamicProxy.maijiu();
-        dynamicProxy.maiYing();*/
-
-        SellWine sellWine = (SellWine)Proxy.newProxyInstance(MaiMaoTaiWine.class.getClassLoader(), MaiMaoTaiWine.class.getInterfaces(), new InvocationHandler() {
-            @Override
-            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                System.out.println("销售开始  柜台是： " + MaiMaoTaiWine.class.getSimpleName());
-                method.invoke(MaiMaoTaiWine.class.newInstance(), args);
-                System.out.println("销售结束");
-
-                return null;
-            }
-        });
-        sellWine.maiYing();
-        sellWine.maijiu();
-
-
-
-        MaiMaoTaiWine maiMaoTaiWine = new MaiMaoTaiWine();
-
-        SellWine sellWine2 = (SellWine)Proxy.newProxyInstance(maiMaoTaiWine.getClass().getClassLoader(), maiMaoTaiWine.getClass().getInterfaces(), new InvocationHandler() {
-            @Override
-            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                System.out.println("销售开始2  柜台是： " + maiMaoTaiWine.getClass().getSimpleName());
-                method.invoke(maiMaoTaiWine, args);
-                System.out.println("销售结束2 ");
-
-                return null;
-            }
-        });
-        sellWine2.maiYing();
-        sellWine2.maijiu();
-    }
-
-
-    /**
-     * 静态代理
-     */
-    private static void testProxy1() {
-
-        RealMovie realMovie = new RealMovie();
-        Cinema cinema = new Cinema(realMovie);
-        cinema.play();
-    }
-
 
     private static void test1() {
 
@@ -137,7 +45,7 @@ public class myClass {
 
     private static void testFiled() {
 
-       /* try {
+        try {
             Field field = Test.class.getDeclaredField("filed");
             field.setAccessible(true);
             for (Annotation annotation : field.getAnnotations()) {
@@ -149,9 +57,9 @@ public class myClass {
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
-*/
 
-  /*     Test test = new Test();
+
+       Test test = new Test();
         try {
             for (Field field : test.getClass().getDeclaredFields()) {
                 field.setAccessible(true);
@@ -165,7 +73,7 @@ public class myClass {
             }
         } catch (IllegalAccessException e) {
             e.printStackTrace();
-        }*/
+        }
 
       /*  for (Method method : Test.class.getMethods()) {
             TestAnnotation methodAnnotation = method.getAnnotation(TestAnnotation.class);
@@ -205,7 +113,7 @@ public class myClass {
 
             //Test test = new Test();
 
-            for (Method method : object.getMethods()) {
+            /*for (Method method : object.getMethods()) {
                 if (method.isAnnotationPresent(TestAnnotation.class)) {
                     TestAnnotation testAnnotation = method.getAnnotation(TestAnnotation.class);
                     System.out.println("testMetbord1  id()-->" + testAnnotation.id());
@@ -213,7 +121,7 @@ public class myClass {
                     method.invoke(object.newInstance(), testAnnotation.value());
                 }
             }
-
+*/
         } catch (Exception e) {
             e.printStackTrace();
         }

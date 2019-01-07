@@ -5,7 +5,9 @@ import com.mwee.android.sqlite.base.ClientMetaUtil;
 
 import java.util.HashMap;
 
-import xdroid.mwee.com.mwbase.net.OkHttpUtils;
+import xdroid.mwee.com.mwbase.okhttp.OkHttpUtils;
+import xdroid.mwee.com.mwbase.okhttp.callback.EncryptJsonCallBack;
+import xdroid.mwee.com.mwbase.okhttp.callback.JsonCallback;
 import xdroid.mwee.com.zmstudy.model.BindResponse;
 import xdroid.mwee.com.zmstudy.model.bean.GankModel;
 import xdroid.mwee.com.zmstudy.model.GetDataResponse;

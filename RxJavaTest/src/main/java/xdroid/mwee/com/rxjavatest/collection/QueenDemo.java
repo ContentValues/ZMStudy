@@ -1,11 +1,23 @@
 package xdroid.mwee.com.rxjavatest.collection;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.Observer;
+import java.util.Queue;
 import java.util.Random;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import jdk.nashorn.internal.objects.annotations.Setter;
 
 /**
  * Created by zhangmin on 2018/9/25.
@@ -15,7 +27,7 @@ public class QueenDemo {
     public static void main(String[] args) throws InterruptedException {
 
         /* 声明一个容量为10的缓存队列 */
-        LinkedBlockingQueue<String> queue = new LinkedBlockingQueue<String>(10);
+     /*   LinkedBlockingQueue<String> queue = new LinkedBlockingQueue<String>(10);
 
 
         ExecutorService executorService = Executors.newCachedThreadPool();
@@ -45,8 +57,40 @@ public class QueenDemo {
 
         Thread.sleep(2000);
         // 退出Executor
-        executorService.shutdown();
+        executorService.shutdown();*/
 
+        //test1();
+        //test2(new HashSet<HashType>(), HashType.class);
+
+        test2(new HashSet<HashType>(), HashType.class);
+
+        test2(new LinkedHashSet<HashType>(), HashType.class);
+
+        test2(new TreeSet<TreeType>(), TreeType.class);
+
+
+    }
+
+
+    private static void test1() {
+
+        Queue<Integer> queue = new LinkedList<>();
+
+        Random random = new Random();
+        for (int i = 0; i < 10; i++) {
+            //queue.offer(random.nextInt(20));
+            queue.add(random.nextInt(20));
+        }
+
+        while (queue.peek() != null) {
+            //System.out.println(queue.poll() + "  ");
+            //System.out.println(queue.element() + "  ");
+            System.out.println(queue.remove() + "  ");
+        }
+
+        System.out.println("大小为" + queue.size() + "  ");
+
+        //System.out.println(queue.poll() + "  ");
 
     }
 
@@ -144,5 +188,76 @@ public class QueenDemo {
         }
     }
 
+
+    private static <T> Set<T> fill(Set<T> set, Class<T> tClass) {
+
+        for (int i = 0; i < 10; i++) {
+            try {
+                set.add(tClass.getConstructor(int.class).newInstance(i));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return set;
+    }
+
+
+    static <T> void test2(Set<T> set, Class<T> tClass) {
+        fill(set, tClass);
+        fill(set, tClass);
+        fill(set, tClass);
+        System.out.println(set);
+    }
+
+    /*-----测试set--*/
+
+    static class SetType {
+
+        public int i;
+
+        public SetType(int i) {
+            this.i = i;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            return o instanceof SetType && ((SetType) o).i == i;
+        }
+
+        @Override
+        public String toString() {
+            return Integer.toString(i);
+        }
+    }
+
+    static class HashType extends SetType {
+
+        public HashType(int i) {
+            super(i);
+        }
+
+        @Override
+        public int hashCode() {
+            return i;
+        }
+    }
+
+    static class TreeType extends SetType implements Comparable<SetType> {
+        public TreeType(int i) {
+            super(i);
+        }
+
+        @Override
+        public int compareTo(SetType setType) {
+
+            if (setType.i < i) {
+                return -1;
+            }
+            if (setType.i == i) {
+                return 0;
+            }
+            return 1;
+        }
+    }
 
 }

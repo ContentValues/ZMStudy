@@ -12,9 +12,9 @@ import com.mwee.android.tools.base.BaseConfig;
 import com.mwee.android.tools.base.Environment;
 import com.squareup.leakcanary.LeakCanary;
 
-import xdroid.mwee.com.mwbase.net.OkHttpUtils;
+import xdroid.mwee.com.mwbase.okhttp.OkHttpUtils;
 import okhttp3.OkHttpClient;
-import xdroid.mwee.com.zmstudy.db.DBInit;
+import xdroid.mwee.com.zmstudy.business.db.DBInit;
 import xdroid.mwee.com.zmstudy.utils.InitDebugTools;
 
 /**

@@ -1,7 +1,7 @@
 package xdroid.mwee.com.zmstudy;
 
 import xdroid.mwee.com.mwcommon.imageloader.ILoader;
-import xdroid.mwee.com.zmstudy.router.Router;
+import com.mwee.android.tools.router.Router;
 
 /**
  * Created by wanglei on 2016/12/4.

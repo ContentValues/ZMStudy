@@ -9,7 +9,7 @@ import com.mwee.android.tools.DateUtil;
 import java.text.DecimalFormat;
 
 import xdroid.mwee.com.model.util.db.CacheModel;
-import xdroid.mwee.com.zmstudy.db.client.HostDBUtil;
+import xdroid.mwee.com.zmstudy.business.db.client.HostDBUtil;
 import xdroid.mwee.com.zmstudy.model.IOCache;
 
 /**

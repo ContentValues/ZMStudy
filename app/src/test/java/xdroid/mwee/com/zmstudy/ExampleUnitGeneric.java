@@ -6,15 +6,15 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import xdroid.mwee.com.zmstudy.cute.Thread.AutomicIntegerTest;
-import xdroid.mwee.com.zmstudy.cute.Thread.ThreadDemo;
-import xdroid.mwee.com.zmstudy.cute.Thread.URLDemo;
-import xdroid.mwee.com.zmstudy.cute.collection.CollectionDemo;
-import xdroid.mwee.com.zmstudy.cute.collection.MapDemo;
-import xdroid.mwee.com.zmstudy.cute.generic.GenericDemo;
-import xdroid.mwee.com.zmstudy.cute.rxjava.CustomerObservable;
-import xdroid.mwee.com.zmstudy.cute.rxjava.CustomerObserver;
-import xdroid.mwee.com.zmstudy.cute.rxjava.CustomerObserver2;
+import xdroid.mwee.com.zmstudy.business.cute.Thread.AutomicIntegerTest;
+import xdroid.mwee.com.zmstudy.business.cute.Thread.ThreadDemo;
+import xdroid.mwee.com.zmstudy.business.cute.Thread.URLDemo;
+import xdroid.mwee.com.zmstudy.business.cute.collection.CollectionDemo;
+import xdroid.mwee.com.zmstudy.business.cute.collection.MapDemo;
+import xdroid.mwee.com.zmstudy.business.cute.generic.GenericDemo;
+import xdroid.mwee.com.zmstudy.business.cute.rxjava.CustomerObservable;
+import xdroid.mwee.com.zmstudy.business.cute.rxjava.CustomerObserver;
+import xdroid.mwee.com.zmstudy.business.cute.rxjava.CustomerObserver2;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

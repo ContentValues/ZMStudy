@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="xdroid.mwee.com.zmstudy">
 
- <!--   <permission
-        android:name="com.mwee.android.posprint.PERMISSION_PRINT_CONNECT"
-        android:protectionLevel="signature" />-->
+    <!--   <permission
+           android:name="com.mwee.android.posprint.PERMISSION_PRINT_CONNECT"
+           android:protectionLevel="signature" />-->
     <!-- 往sdcard中写入数据的权限 -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -42,7 +42,7 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.WelcomeActitvity"
+            android:name=".ui.activity.WelcomeActitvity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -52,11 +52,18 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.WebActivity" />
+        <activity android:name=".ui.activity.WebActivity" />
 
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:screenOrientation="landscape" />
+        <activity
+            android:name=".ui.fragment.IntentServiceActivity"
+            android:screenOrientation="landscape" />
+
+        <service android:name=".ui.fragment.IntentServiceActivity$IntentForService"/>
+
+        <activity android:name=".ui.activity.ActivityBad"/>
 
     </application>
 
