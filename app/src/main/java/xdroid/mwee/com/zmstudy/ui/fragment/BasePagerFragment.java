@@ -43,7 +43,7 @@ public abstract class BasePagerFragment extends BaseFragment {
         tv_error = v.findViewById(R.id.tv_error);
         tv_empty = v.findViewById(R.id.tv_empty);
 
-        System.out.println("git 第二次");
+        System.out.println("测试1");
     }
 
     @Override
