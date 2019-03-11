@@ -1,13 +1,13 @@
 apply plugin: 'maven'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     lintOptions {
         abortOnError false
     }
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 28
         resConfigs "en", "zh", "zh-rCN"
         ndk {
             //设置支持的SO库架构

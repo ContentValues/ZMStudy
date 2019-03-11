@@ -6,6 +6,9 @@ import android.widget.TextView;
 
 import java.util.HashMap;
 
+import okhttp3.Call;
+import rx.Observable;
+import xdroid.mwee.com.mwbase.okhttp.callback.JsonCallback;
 import xdroid.mwee.com.mwcommon.base.SimpleRecAdapter;
 import xdroid.mwee.com.mwcommon.base.BaseFragment;
 import xdroid.mwee.com.mwcommon.dialog.Progress;
@@ -16,6 +19,7 @@ import xdroid.mwee.com.zmstudy.R;
 import xdroid.mwee.com.zmstudy.model.bean.GankModel;
 import xdroid.mwee.com.mwbase.NetError;
 import xdroid.mwee.com.mwbase.retrofit.ApiSubcriber;
+import xdroid.mwee.com.zmstudy.net.NetApi;
 import xdroid.mwee.com.zmstudy.net.service.HttpService;
 import xdroid.mwee.com.mwbase.retrofit.XRetrofit;
 import xdroid.mwee.com.mwbase.RXUtils;
@@ -81,16 +85,40 @@ public abstract class BasePagerFragment extends BaseFragment {
 
     private void loadData(int currentPager) {
 
+//        NetApi.getGankData(getType(), PAGE_SIZE, currentPager, new JsonCallback<GankModel>() {
+//            @Override
+//            public void onFail(Call call, String erroMsg, int id) {
+//                tv_error.setText(erroMsg);
+//                contentLayout.showError();
+//            }
+//
+//            @Override
+//            public void onResponse(GankModel response, int id) {
+//                if (currentPager <= 1) {
+//                    getAdapter().setData(response.results);
+//                } else {
+//                    getAdapter().addData(response.results);
+//                }
+//                contentLayout.getRecyclerView().setPage(currentPager, MAX_PAGE);
+//
+//                //todo 可以空数据接口 展示空数据 但是没有必要
+//                if (getAdapter().getItemCount() < 1) {
+//                    contentLayout.showEmpty();
+//                    return;
+//                }
+//            }
+//        });
+
         HashMap<String, String> map = new HashMap();
         map.put("type", getType() + "");
         map.put("number", PAGE_SIZE + "");
         map.put("page", currentPager + "");
 
-        XRetrofit.getInstance().getRetrofit(HttpService.BASE_URL, false).create(HttpService.class)
-                //XApi.create(HttpService.class, HttpService.BASE_URL, false)
-                .getGankData(getType(), PAGE_SIZE, currentPager)
-                //.getGankData(map)
-                .compose(RXUtils.getScheduler())
+        HttpService httpService = XRetrofit.getInstance().getRetrofit(HttpService.BASE_URL, false).create(HttpService.class);
+        //XApi.create(HttpService.class, HttpService.BASE_URL, false)
+        Observable<GankModel> observable = httpService.getGankData(getType(), PAGE_SIZE, currentPager);
+        //.getGankData(map)
+        observable.compose(RXUtils.getScheduler())
                 .subscribe(new ApiSubcriber<GankModel>() {
                     @Override
                     protected void onFail(NetError error) {

@@ -58,15 +58,16 @@ public class WelcomeActitvity extends BaseActivity {
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
-                        String token = ClientMetaUtil.getSettingsValueByKey(META.TOKEN);
-                        String seed = ClientMetaUtil.getSettingsValueByKey(META.SEED);
-                        String shopid = ClientMetaUtil.getSettingsValueByKey(META.SHOPID);
-                        boolean isLogin = !TextUtils.isEmpty(token) && !TextUtils.isEmpty(seed) && !TextUtils.isEmpty(shopid);
-                        if (isLogin) {
-                            jumptoMain();
-                        } else {
-                            loadActive();
-                        }
+                        Router.newIntent(WelcomeActitvity.this).to(MainActivity.class).launch();
+//                        String token = ClientMetaUtil.getSettingsValueByKey(META.TOKEN);
+//                        String seed = ClientMetaUtil.getSettingsValueByKey(META.SEED);
+//                        String shopid = ClientMetaUtil.getSettingsValueByKey(META.SHOPID);
+//                        boolean isLogin = !TextUtils.isEmpty(token) && !TextUtils.isEmpty(seed) && !TextUtils.isEmpty(shopid);
+//                        if (isLogin) {
+//                            jumptoMain();
+//                        } else {
+//                            loadActive();
+//                        }
 
                         //loadActive222();
                     }

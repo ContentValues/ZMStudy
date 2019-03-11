@@ -49,9 +49,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     ViewPager viewPager;
 
     private List<Fragment> fragmentList = new ArrayList<>();
-    private String[] titles = {"小帅哥", "妹子", "订单", "桌台", "动画", "Handler Thread"};
+    private String[] titles = {"小帅哥", "妹子"/*, "订单", "桌台"*/, "动画", "Handler Thread"};
 
-    private int[] pics = new int[]{R.mipmap.ios_icon, R.mipmap.js_icon, R.mipmap.other_icon, R.mipmap.android_icon, R.mipmap.android_icon, R.mipmap.js_icon};
+    private int[] pics = new int[]{R.mipmap.ios_icon, R.mipmap.js_icon/*, R.mipmap.other_icon, R.mipmap.android_icon*/, R.mipmap.android_icon, R.mipmap.js_icon};
     private DrawerLayout drawer_layout;
     private NavigationView navigationView;
 
@@ -132,8 +132,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         fragmentList.add(HomeFragment.newInstance());
         fragmentList.add(GirlFragment.newInstance());
-        fragmentList.add(FastFoodOrderFragment.newInstance());
-        fragmentList.add(TableFragment.newInstance());
+//        fragmentList.add(FastFoodOrderFragment.newInstance());
+//        fragmentList.add(TableFragment.newInstance());
         fragmentList.add(AnimatorViewFragment.newInstance());
         fragmentList.add(HandlerFragment.newInstance());
 

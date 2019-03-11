@@ -55,11 +55,9 @@
         <activity android:name=".ui.activity.WebActivity" />
 
         <activity
-            android:name=".ui.activity.MainActivity"
-            android:screenOrientation="landscape" />
+            android:name=".ui.activity.MainActivity" />
         <activity
-            android:name=".ui.fragment.IntentServiceActivity"
-            android:screenOrientation="landscape" />
+            android:name=".ui.fragment.IntentServiceActivity" />
 
         <service android:name=".ui.fragment.IntentServiceActivity$IntentForService"/>
 

@@ -42,5 +42,5 @@
         android:layout_height="60dp"
         android:background="@color/colorPrimary"
         style="@style/MyTablayoutstyle"
-        app:tabMode="fixed"/>
+        app:tabMode="scrollable"/>
 </LinearLayout>
