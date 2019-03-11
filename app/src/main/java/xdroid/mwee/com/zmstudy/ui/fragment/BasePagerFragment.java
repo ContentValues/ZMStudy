@@ -42,6 +42,8 @@ public abstract class BasePagerFragment extends BaseFragment {
         contentLayout = v.findViewById(R.id.contentLayout);
         tv_error = v.findViewById(R.id.tv_error);
         tv_empty = v.findViewById(R.id.tv_empty);
+
+        System.out.println("git 第一次");
     }
 
     @Override
