@@ -41,7 +41,6 @@ public abstract class BasePagerFragment extends BaseFragment {
     public void initView(View v) {
         contentLayout = v.findViewById(R.id.contentLayout);
         tv_error = v.findViewById(R.id.tv_error);
-
         tv_empty = v.findViewById(R.id.tv_empty);
     }
 
