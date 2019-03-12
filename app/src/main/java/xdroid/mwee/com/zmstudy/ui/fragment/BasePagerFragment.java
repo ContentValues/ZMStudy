@@ -44,6 +44,11 @@ public abstract class BasePagerFragment extends BaseFragment {
         tv_empty = v.findViewById(R.id.tv_empty);
 
         System.out.println("测试2");
+
+
+        System.out.println("git branch");
+        System.out.println("git branch dev");
+        System.out.println("git checkout dev");
     }
 
     @Override
