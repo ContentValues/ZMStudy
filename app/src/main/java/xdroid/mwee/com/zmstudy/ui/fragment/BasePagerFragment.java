@@ -55,7 +55,7 @@ public abstract class BasePagerFragment extends BaseFragment {
         System.out.println("git checkout future");
 
         System.out.println("git checkout dev");
-        System.out.println("git checkout dev");
+        System.out.println("git checkout 我们冲突了 master 哈哈");
     }
 
     @Override
