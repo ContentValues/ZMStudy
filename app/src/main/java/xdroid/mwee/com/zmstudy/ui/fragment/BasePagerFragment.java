@@ -59,6 +59,8 @@ public abstract class BasePagerFragment extends BaseFragment {
 
 
         System.out.println("git checkout futuredev");
+
+        System.out.println("issuse-101 修复了一个紧急的bug 也需要合并到正在开发的最新的dev分支上");
     }
 
     @Override
