@@ -115,22 +115,22 @@ public class WelcomeActitvity extends BaseActivity {
         });*/
 
 
-        String tag = "2018-11-14 14:00:40";
-        RequestBody requestBody = RequestBody.create(MediaType.parse("text/plain;charset=utf-8"), tag);
-        XRetrofit.create(HttpService.class).downLoad(requestBody)
-                .compose(RXUtils.getScheduler())
-                .compose(RXUtils.getApiTransformer())
-                .subscribe(new ApiSubcriber<GetDataResponse>() {
-                    @Override
-                    protected void onFail(NetError error) {
-                        LogUtil.log("error-->" + JSON.toJSONString(error));
-                    }
-
-                    @Override
-                    public void onNext(GetDataResponse response) {
-                        LogUtil.log("onNext-->" + JSON.toJSONString(response));
-                    }
-                });
+//        String tag = "2018-11-14 14:00:40";
+//        RequestBody requestBody = RequestBody.create(MediaType.parse("text/plain;charset=utf-8"), tag);
+//        XRetrofit.create(HttpService.class).downLoad(requestBody)
+//                .compose(RXUtils.getScheduler())
+//                .compose(RXUtils.getApiTransformer())
+//                .subscribe(new ApiSubcriber<GetDataResponse>() {
+//                    @Override
+//                    protected void onFail(NetError error) {
+//                        LogUtil.log("error-->" + JSON.toJSONString(error));
+//                    }
+//
+//                    @Override
+//                    public void onNext(GetDataResponse response) {
+//                        LogUtil.log("onNext-->" + JSON.toJSONString(response));
+//                    }
+//                });
 
 
         /*HashMap<String, String> params = new HashMap();

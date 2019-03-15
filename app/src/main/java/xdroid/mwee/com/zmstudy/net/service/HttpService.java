@@ -4,6 +4,7 @@ import com.mwee.android.sqlite.base.APPConfig;
 import java.util.HashMap;
 
 import okhttp3.RequestBody;
+import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
@@ -43,6 +44,13 @@ public interface HttpService {
     Observable<GankModel> getGankData(@Path("type") String type,
                                       @Path("number") int pageSize,
                                       @Path("page") int pageNum);
+
+
+
+    @GET("data/{type}/{number}/{page}")
+    Call<GankModel> getGankDataRetrofit(@Path("type") String type,
+                                @Path("number") int pageSize,
+                                @Path("page") int pageNum);
 
 
 
