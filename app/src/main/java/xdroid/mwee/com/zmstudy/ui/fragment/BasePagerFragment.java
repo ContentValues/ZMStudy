@@ -116,56 +116,56 @@ public abstract class BasePagerFragment extends BaseFragment {
 
     private void loadData(int currentPager) {
 
-        NetApi.getGankData(getType(), PAGE_SIZE, currentPager, new JsonCallback<GankModel>() {
-            @Override
-            public void onFail(Call call, String erroMsg, int id) {
-                tv_error.setText(erroMsg);
-                contentLayout.showError();
-            }
-
-            @Override
-            public void onResponse(GankModel response, int id) {
-                if (currentPager <= 1) {
-                    getAdapter().setData(response.results);
-                } else {
-                    getAdapter().addData(response.results);
-                }
-                contentLayout.getRecyclerView().setPage(currentPager, MAX_PAGE);
-
-                //todo 可以空数据接口 展示空数据 但是没有必要
-                if (getAdapter().getItemCount() < 1) {
-                    contentLayout.showEmpty();
-                    return;
-                }
-            }
-        });
-
-
-//        HttpService httpService = XRetrofit.getInstance().getRetrofit(HttpService.BASE_URL, false).create(HttpService.class);
-//
-//        retrofit2.Call<GankModel> call = httpService.getGankDataRetrofit(getType(), PAGE_SIZE, currentPager);
-//
-//
-//        call.enqueue(new Callback<GankModel>() {
+//        NetApi.getGankData(getType(), PAGE_SIZE, currentPager, new JsonCallback<GankModel>() {
 //            @Override
-//            public void onResponse(retrofit2.Call<GankModel> call, Response<GankModel> response) {
-//
-//                if(Looper.myLooper() == Looper.getMainLooper()){
-//                    System.out.println(JSON.toJSONString("call.enqueue 运行在主线程"));
-//                }else {
-//                    System.out.println(JSON.toJSONString("call.enqueue 运行在子线程"));
-//                }
-//
-//
-//                getAdapter().setData(response.body().results);
-//
+//            public void onFail(Call call, String erroMsg, int id) {
+//                tv_error.setText(erroMsg);
+//                contentLayout.showError();
 //            }
 //
 //            @Override
-//            public void onFailure(retrofit2.Call<GankModel> call, Throwable t) {
+//            public void onResponse(GankModel response, int id) {
+//                if (currentPager <= 1) {
+//                    getAdapter().setData(response.results);
+//                } else {
+//                    getAdapter().addData(response.results);
+//                }
+//                contentLayout.getRecyclerView().setPage(currentPager, MAX_PAGE);
 //
+//                //todo 可以空数据接口 展示空数据 但是没有必要
+//                if (getAdapter().getItemCount() < 1) {
+//                    contentLayout.showEmpty();
+//                    return;
+//                }
 //            }
 //        });
+
+
+        HttpService httpService = XRetrofit.getInstance().getRetrofit(HttpService.BASE_URL, false).create(HttpService.class);
+
+        retrofit2.Call<GankModel> call = httpService.getGankDataRetrofit(getType(), PAGE_SIZE, currentPager);
+
+
+        call.enqueue(new Callback<GankModel>() {
+            @Override
+            public void onResponse(retrofit2.Call<GankModel> call, Response<GankModel> response) {
+
+                if(Looper.myLooper() == Looper.getMainLooper()){
+                    System.out.println(JSON.toJSONString("call.enqueue 运行在主线程"));
+                }else {
+                    System.out.println(JSON.toJSONString("call.enqueue 运行在子线程"));
+                }
+
+
+                getAdapter().setData(response.body().results);
+
+            }
+
+            @Override
+            public void onFailure(retrofit2.Call<GankModel> call, Throwable t) {
+
+            }
+        });
 
 
 //        HashMap<String, String> map = new HashMap();
