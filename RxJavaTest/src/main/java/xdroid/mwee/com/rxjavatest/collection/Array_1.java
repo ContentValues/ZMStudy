@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * Created by zhangmin on 2019/1/3.
  */
 
-public class Array_1<E> extends AbstractQueue<E> implements java.io.Serializable{
+public  class Array_1<E> extends AbstractQueue<E> implements java.io.Serializable{
 
     /** The queued items */
     final Object[] items;

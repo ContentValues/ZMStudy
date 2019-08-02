@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_marginLeft="30dp"
+    android:layout_marginTop="30dp"
+    android:layout_height="match_parent">
+    <xdroid.mwee.com.zmstudy.ui.view.tpie.CountDownView
+        android:id="@+id/countDownView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:cd_animator_time="8"
+        app:cd_arc_color="#000000"
+        app:cd_arc_width="3dp"
+        app:cd_bg_color="#FF4081"
+        app:cd_circle_radius="40dp"
+        app:cd_location="right"
+        app:cd_retreat_type="forward"
+        app:cd_text_color="#000000"
+        app:cd_text_size="14sp" />
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开始"/>
+
+</LinearLayout>

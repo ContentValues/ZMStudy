@@ -19,7 +19,8 @@ public class FragmentController {
         if (targetFragment == null) {
             return;
         }
-        FragmentTransaction trx = targetFragment.getFragmentManagerWithinHost().beginTransaction();
+        //FragmentTransaction trx = targetFragment.getFragmentManagerWithinHost().beginTransaction();
+        FragmentTransaction trx = targetFragment.getFragmentManager().beginTransaction();
         trx.show(targetFragment).commitAllowingStateLoss();
     }
 

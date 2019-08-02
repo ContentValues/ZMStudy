@@ -52,6 +52,9 @@ public class V3_2 {
     private static class InnerClass {
         public void add(String newStr) {
             StringBuilder str = Counter.counter.get();
+
+            //System.out.println("StringBuilder---->"+str.hashCode());
+
             Counter.counter.set(str.append(newStr));
         }
         public void print() {

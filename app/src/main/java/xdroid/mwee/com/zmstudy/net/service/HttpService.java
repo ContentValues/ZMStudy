@@ -1,4 +1,5 @@
 package xdroid.mwee.com.zmstudy.net.service;
+
 import com.mwee.android.sqlite.base.APPConfig;
 
 import java.util.HashMap;
@@ -14,6 +15,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import rx.Observable;
 import xdroid.mwee.com.zmstudy.model.BindResponse;
+import xdroid.mwee.com.zmstudy.banner.BannerListVo;
 import xdroid.mwee.com.zmstudy.model.bean.GankModel;
 import xdroid.mwee.com.zmstudy.model.GetDataResponse;
 import xdroid.mwee.com.zmstudy.model.bean.KBTempDataResponse;
@@ -32,6 +34,15 @@ public interface HttpService {
             "-103/";
 
 
+    @FormUrlEncoded
+    @POST("v3_0_2/adv/get")
+    Observable<BannerListVo> getBannerData(@Field("pos_type") String posType,
+                                           @Field("f_catalog_id") String f_catalog_id,
+                                           @Field("s_catalog_id") String s_catalog_id,
+                                           @Field("t_catalog_id") String t_catalog_id,
+                                           @Field("province") String province);
+
+
     /**
      * 获取页面数据
      *
@@ -46,12 +57,10 @@ public interface HttpService {
                                       @Path("page") int pageNum);
 
 
-
     @GET("data/{type}/{number}/{page}")
     Call<GankModel> getGankDataRetrofit(@Path("type") String type,
-                                @Path("number") int pageSize,
-                                @Path("page") int pageNum);
-
+                                        @Path("number") int pageSize,
+                                        @Path("page") int pageNum);
 
 
     /**
@@ -63,15 +72,14 @@ public interface HttpService {
 
     @FormUrlEncoded
     @POST("kborder/getList")
-    Observable<KBTempDataResponse> queryKBOrderList (@Field("pageNo") String pageNo
+    Observable<KBTempDataResponse> queryKBOrderList(@Field("pageNo") String pageNo
             , @Field("pageSize") String pageSize
             , @Field("queryType") String queryType);
 
 
-
     @FormUrlEncoded
     @POST("kborder/getList")
-    Observable<KBTempDataResponse> queryKBOrderList (@FieldMap HashMap<String,String> map);
+    Observable<KBTempDataResponse> queryKBOrderList(@FieldMap HashMap<String, String> map);
 
     /**
      * 绑定接口

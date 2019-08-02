@@ -39,12 +39,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="false"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.activity.WelcomeActitvity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="landscape">
+            android:name=".ui.activity.MainActivity"
+            android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -54,14 +52,16 @@
 
         <activity android:name=".ui.activity.WebActivity" />
 
-        <activity
-            android:name=".ui.activity.MainActivity" />
-        <activity
-            android:name=".ui.fragment.IntentServiceActivity" />
+        <!--<activity android:name=".ui.activity.MainActivity" />-->
+        <activity android:name=".ui.fragment.IntentServiceActivity" />
 
-        <service android:name=".ui.fragment.IntentServiceActivity$IntentForService"/>
+        <service android:name=".ui.fragment.IntentServiceActivity$IntentForService" />
 
-        <activity android:name=".ui.activity.ActivityBad"/>
+        <activity android:name=".ui.activity.ActivityBad" />
+
+        <service android:name=".ui.fragment.M_JobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+
 
     </application>
 

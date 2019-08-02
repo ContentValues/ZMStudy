@@ -3,11 +3,14 @@ package xdroid.mwee.com.zmstudy.ui.adapter;
 import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.util.List;
 
 import xdroid.mwee.com.mwcommon.base.SimpleRecAdapter;
 import xdroid.mwee.com.mwcommon.imageloader.ILFactory;
@@ -35,6 +38,7 @@ public class HomeAdapter extends SimpleRecAdapter<GankModel.ItemBean, HomeAdapte
     public int getLayoutId() {
         return R.layout.adapter_home;
     }
+
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
@@ -127,6 +131,8 @@ public class HomeAdapter extends SimpleRecAdapter<GankModel.ItemBean, HomeAdapte
 
 
     }
+
+
 
     public  static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivType;

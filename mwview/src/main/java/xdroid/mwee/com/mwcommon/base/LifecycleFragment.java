@@ -22,7 +22,7 @@ import com.trello.rxlifecycle.components.support.RxFragment;
  * Created by zhangmin on 2018/6/19.
  */
 
-public class LifecycleFragment extends RxFragment implements Host {
+public class LifecycleFragment extends RxFragment  {
 
     private long timestamp;
 
@@ -185,31 +185,5 @@ public class LifecycleFragment extends RxFragment implements Host {
         }
         super.onDetach();
 
-    }
-
-
-    @Override
-    public FragmentManager getFragmentManagerWithinHost() {
-        return getFragmentManager();
-    }
-
-    @Override
-    public String getStringWithinHost(@StringRes int resId) {
-        return getString(resId);
-    }
-
-    @Override
-    public Resources getResourcesWithinHost() {
-        return getResources();
-    }
-
-    @Override
-    public LifecycleActivity getActivityWithinHost() {
-        return (LifecycleActivity) getActivity();
-    }
-
-    @Override
-    public Context getContextWithinHost() {
-        return getActivity();
     }
 }

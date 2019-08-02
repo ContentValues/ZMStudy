@@ -18,7 +18,7 @@ import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
  * Created by zhangmin on 2018/6/19.
  */
 
-public class LifecycleActivity extends RxAppCompatActivity implements Host{
+public class LifecycleActivity extends RxAppCompatActivity {
 
     //public static BaseActivity topActivity = null;
     private long timestamp;
@@ -249,33 +249,4 @@ public class LifecycleActivity extends RxAppCompatActivity implements Host{
 
         super.onDestroy();
     }
-
-
-    @Override
-    public FragmentManager getFragmentManagerWithinHost() {
-        return getSupportFragmentManager();
-    }
-
-
-    @Override
-    public String getStringWithinHost(@StringRes int resId) {
-        return getString(resId);
-    }
-
-    @Override
-    public Resources getResourcesWithinHost() {
-        return getResources();
-    }
-
-
-    @Override
-    public LifecycleActivity getActivityWithinHost() {
-        return this;
-    }
-
-    @Override
-    public Context getContextWithinHost() {
-        return this;
-    }
-
 }

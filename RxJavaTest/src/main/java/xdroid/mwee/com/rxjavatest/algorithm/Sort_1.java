@@ -1,6 +1,11 @@
 package xdroid.mwee.com.rxjavatest.algorithm;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -32,54 +37,44 @@ public class Sort_1 {
 //        System.out.println(findLastEqual(array, 3));
 
 
-        int[] array = {72, 6, 57, 88, 60/*, 42,83,73,48,85*/};
+//        int[] array = {72, 2, 6, 1, 88, 60/*, 42,83,73,48,85*/};
+//
+//        System.out.println(binarySerach(array, 2));
 
-        quick_sort(array, 0, array.length - 1);
+        //quick_sort(array, 0, array.length - 1);
+//        selectSort(array);
+//
+//        System.out.println(Arrays.toString(array));
 
-        System.out.println(Arrays.toString(array));
 
     }
 
-    static void quck(int[] s, int l, int r) {
+    /**
+     * 二分查找，找到该值在数组中的下标，否则为-1
+     */
+    static int binarySerach(int[] array, int key) {
 
-        int i = l;
-        int j = r;
-        int x = s[l];
+        int left = 0;
+        int right = array.length - 1;
 
-        while (i < j) {
-
-            while (i < j && s[j] >= x) {
-
-                j--;
+        // 这里必须是 <=
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (array[mid] == key) {
+                return mid;
+            } else if (array[mid] < key) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
             }
-
-            if (i < j) {
-                s[i++] = s[j];
-
-            }
-
-
-            while (i < j && s[i] < x) {
-                i++;
-            }
-
-            if (i < j) {
-
-                s[j--] =s[i];
-            }
-
-
         }
 
-        s[i] = x;
-        quick_sort(s, l, i - 1);
-        quick_sort(s, i + 1, r);
-
-
+        return -1;
     }
 
 
     static void quick_sort(int s[], int l, int r) {
+
         if (l < r) {
             //Swap(s[l], s[(l + r) / 2]); //将中间的这个数和第一个数交换 参见注1
             int i = l, j = r, x = s[l];
@@ -190,51 +185,6 @@ public class Sort_1 {
         return -1;
     }
 
-    /**
-     * 二分查找，找到该值在数组中的下标，否则为-1
-     */
-    static int binarySerach(int[] array, int key) {
-
-
-        int left = 0;
-        int right = array.length - 1;
-
-        while (left <= right) {
-            int mid = array.length / 2;
-            if (array[mid] == key) {
-                return mid;
-            }
-            if (array[mid] >= key) {
-
-                right = mid - 1;
-            } else {
-                left = left + 1;
-            }
-
-        }
-        return -1;
-
-
-//        int left = 0;
-//        int right = array.length - 1;
-//
-//        // 这里必须是 <=
-//        while (left <= right) {
-//            int mid = (left + right) / 2;
-//            if (array[mid] == key) {
-//                return mid;
-//            }
-//            else if (array[mid] < key) {
-//                left = mid + 1;
-//            }
-//            else {
-//                right = mid - 1;
-//            }
-//        }
-//
-//        return -1;
-    }
-
 
     /**
      * 冒泡排序
@@ -281,6 +231,10 @@ public class Sort_1 {
 //        return array;
     }
 
+
+
+
+
     /**
      * 最稳定的排序算法之一，因为无论什么数据进去都是O(n2)的时间复杂度，所以用到它的时候，数据规模越小越好。
      * 唯一的好处可能就是不占用额外的内存空间了吧
@@ -292,36 +246,19 @@ public class Sort_1 {
      * @return
      */
     public static int[] selectSort(int[] array) {
-        if (array == null || array.length == 0) {
-            return array;
-        }
 
         for (int i = 0; i < array.length; i++) {
-            int minIndex = i;
+            int min = i;
             for (int j = i; j < array.length; j++) {
-                if (array[i] > array[j]) {
-                    minIndex = j;
+                if (array[min] > array[j]) {
+                    min = j;
                 }
             }
+            int temp = array[min];
+            array[min] = array[i];
+            array[i] = temp;
 
-            int temp = array[i];
-            array[i] = array[minIndex];
-            array[minIndex] = temp;
         }
-
-
-//        for (int i = 0; i < array.length; i++) {
-//            int min = i;
-//            for (int j = i; j < array.length; j++) {
-//                if (array[min] > array[j]) {
-//                    min = j;
-//                }
-//            }
-//            int temp = array[min];
-//            array[min] = array[i];
-//            array[i] = temp;
-//
-//        }
         return array;
 //
 //            int minLocation = i;
@@ -386,6 +323,7 @@ public class Sort_1 {
             }
         }
         return result;
+
 
 //        int[] result = new int[left.length + right.length];
 //        int i = 0;

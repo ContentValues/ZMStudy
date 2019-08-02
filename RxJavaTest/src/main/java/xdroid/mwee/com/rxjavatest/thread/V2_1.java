@@ -21,7 +21,11 @@ public class V2_1 {
 
     public static void main(String[] args) {
 
-//        new V2_1().wait();
+        try {
+            new V2_1().wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         //V2_1.class 有锁，但是v2_1没有锁所以也会报IllegalMonitorStateException
 //        synchronized (V2_1.class) {
@@ -63,9 +67,9 @@ public class V2_1 {
         }
 
 
-        //df.notifyAll();
-        synchronized (a){
-            a.notify();
+        df.notifyAll();
+        synchronized (df){
+            df.notifyAll();
         }
 
         System.out.println("end main "+Thread.currentThread().getName() + "" + df.format(new Date()));

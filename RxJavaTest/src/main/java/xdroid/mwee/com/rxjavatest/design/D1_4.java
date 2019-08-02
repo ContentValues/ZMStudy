@@ -47,7 +47,10 @@ public class D1_4 {
 
     //汉堡包 名字 价格 打包盒
     interface Item {
-        String name();
+
+         String aa = "";
+
+          String name();
 
         float price();
 

@@ -107,13 +107,11 @@ public class OkHttpUtils {
         }
 
 
-
-
-        if (Looper.getMainLooper() == Looper.myLooper()) {
-            LogUtil.logNET("enqueue onResponse 当前请求运行在主线中" + requestCall.getCall().request().url());
-        } else {
-            LogUtil.logNET("enqueue onResponse 当前请求运行在子线中" + requestCall.getCall().request().url());
-        }
+//        if (Looper.getMainLooper() == Looper.myLooper()) {
+//            LogUtil.logNET("enqueue onResponse 当前请求运行在主线中" + requestCall.getCall().request().url());
+//        } else {
+//            LogUtil.logNET("enqueue onResponse 当前请求运行在子线中" + requestCall.getCall().request().url());
+//        }
 
         //同步请求
       /*  try {
@@ -159,25 +157,14 @@ public class OkHttpUtils {
         requestCall.getCall().enqueue(new okhttp3.Callback() {
             @Override
             public void onFailure(Call call, final IOException e) {
-                if (Looper.getMainLooper() == Looper.myLooper()) {
-                    LogUtil.logNET("enqueue onFailure 当前请求运行在主线中" + call.request().url());
-                } else {
-                    LogUtil.logNET("enqueue onFailure 当前请求运行在子线中" + call.request().url());
-                }
+
                 sendFailResultCallback(call, e, finalCallback, id);
             }
 
             @Override
             public void onResponse(final Call call, final Response response) {
 
-                if (Looper.getMainLooper() == Looper.myLooper()) {
-                    LogUtil.logNET("enqueue onResponse 当前请求运行在主线中" + call.request().url());
-                } else {
-                    LogUtil.logNET("enqueue onResponse 当前请求运行在子线中" + call.request().url());
-                }
-
                 //异步线程调用
-
                 try {
                     if (call.isCanceled()) {
                         sendFailResultCallback(call, new IOException("Canceled!"), finalCallback, id);

@@ -35,14 +35,14 @@ public class V8_1 {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                test.method1();
+                test.method122();
             }
         }).start();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                test.method2();
+                test.method122();
             }
         }).start();
     }
@@ -89,16 +89,19 @@ public class V8_1 {
      * 法体，方法执行完后再释放monitor。在方法执行期间，其他任何线程都无法再获得同一个monitor对象。 其实本质上没有区别，只是方法的同步是一种隐式的方式来实现，无需通过字节码来
      * 完成
      */
-//    public synchronized void method1() {
-//        System.out.println("Method 1 start");
-//        try {
-//            System.out.println("Method 1 execute");
-//            Thread.sleep(3000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        System.out.println("Method 1 end");
-//    }
+    public  synchronized void method122() {
+
+        System.out.println("Method 1 start");
+        try {
+            System.out.println("Method 1 execute");
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Method 1 end");
+
+
+    }
 //
 //    public synchronized void method2() {
 //        System.out.println("Method 2 start");

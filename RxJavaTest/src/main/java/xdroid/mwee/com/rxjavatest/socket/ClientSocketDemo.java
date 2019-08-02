@@ -18,11 +18,8 @@ public class ClientSocketDemo {
 
         try {
             Socket socket = new Socket("127.0.0.1", 9999);
-            OutputStream outputStream = socket.getOutputStream();
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
-            //bufferedWriter.write(Thread.currentThread().getName() + "客户端建立的第一个连接");
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in, "UTF-8"));
-
             BufferedReader readerFromSever = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
             while (true) {

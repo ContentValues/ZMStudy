@@ -2,8 +2,11 @@ package xdroid.mwee.com.zmstudy.ui.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.mwee.android.tools.LogUtil;
 
 import xdroid.mwee.com.mwcommon.base.SimpleRecAdapter;
 import xdroid.mwee.com.mwcommon.imageloader.ILFactory;
@@ -16,13 +19,18 @@ import xdroid.mwee.com.zmstudy.model.bean.GankModel;
 
 public class GirlAdapter extends SimpleRecAdapter<GankModel.ItemBean, GirlAdapter.ViewHolder> {
 
+    private final static String TAG = GirlAdapter.class.getSimpleName();
+
     public GirlAdapter(Context context) {
         super(context);
     }
 
     @Override
     public ViewHolder newViewHolder(View itemView) {
-        return new ViewHolder(itemView);
+
+        ViewHolder viewHolder =   new ViewHolder(itemView);
+        Log.d(TAG, "onCreateViewHolder GirlAdapter     getItemCount" + getItemCount() +"       viewHolder"+viewHolder.hashCode());
+        return viewHolder;
     }
 
     @Override
@@ -32,6 +40,10 @@ public class GirlAdapter extends SimpleRecAdapter<GankModel.ItemBean, GirlAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+
+        Log.d(TAG, "****onBindViewHolder GirlAdapter       getItemCount" + getItemCount()+"       viewHolder"+holder.hashCode());
+
+
         GankModel.ItemBean itemBean = data.get(position);
         ILFactory.getLoader().loadNet(holder.iv_girl, itemBean.getUrl(), null);
         /*ILFactory.getLoader().loadNet(context, item.getUrl(), null, new LoadCallback() {

@@ -99,38 +99,38 @@ public class WelcomeActitvity extends BaseActivity {
 
 
     private void loadActive222() {
-       /* xStateController.showLoading();
-        NetDataProcessor.getInstance().loadActive("202385", new ResultCallback<GetDataResponse>() {
-            @Override
-            public void onSuccess(GetDataResponse data) {
-                xStateController.showContent();
-                jumptoMain();
-            }
-
-            @Override
-            public void onFailure(int code, String msg) {
-                super.onFailure(code, msg);
-                xStateController.showError();
-            }
-        });*/
-
-
-//        String tag = "2018-11-14 14:00:40";
-//        RequestBody requestBody = RequestBody.create(MediaType.parse("text/plain;charset=utf-8"), tag);
-//        XRetrofit.create(HttpService.class).downLoad(requestBody)
-//                .compose(RXUtils.getScheduler())
-//                .compose(RXUtils.getApiTransformer())
-//                .subscribe(new ApiSubcriber<GetDataResponse>() {
-//                    @Override
-//                    protected void onFail(NetError error) {
-//                        LogUtil.log("error-->" + JSON.toJSONString(error));
-//                    }
+//        xStateController.showLoading();
+//        NetDataProcessor.getInstance().loadActive("202385", new ResultCallback<GetDataResponse>() {
+//            @Override
+//            public void onSuccess(GetDataResponse data) {
+//                xStateController.showContent();
+//                jumptoMain();
+//            }
 //
-//                    @Override
-//                    public void onNext(GetDataResponse response) {
-//                        LogUtil.log("onNext-->" + JSON.toJSONString(response));
-//                    }
-//                });
+//            @Override
+//            public void onFailure(int code, String msg) {
+//                super.onFailure(code, msg);
+//                xStateController.showError();
+//            }
+//        });
+
+
+        String tag = "2018-11-14 14:00:40";
+        RequestBody requestBody = RequestBody.create(MediaType.parse("text/plain;charset=utf-8"), tag);
+        XRetrofit.create(HttpService.class).downLoad(requestBody)
+                .compose(RXUtils.getScheduler())
+                .compose(RXUtils.getApiTransformer())
+                .subscribe(new ApiSubcriber<GetDataResponse>() {
+                    @Override
+                    protected void onFail(NetError error) {
+                        LogUtil.log("error-->" + JSON.toJSONString(error));
+                    }
+
+                    @Override
+                    public void onNext(GetDataResponse response) {
+                        LogUtil.log("onNext-->" + JSON.toJSONString(response));
+                    }
+                });
 
 
         /*HashMap<String, String> params = new HashMap();

@@ -4,6 +4,7 @@ package xdroid.mwee.com.rxjavatest.design;
  * Created by zhangmin on 2018/12/4.
  */
 
+
 /**
  * 单列模式
  */

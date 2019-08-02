@@ -12,6 +12,7 @@ import com.mwee.android.tools.base.BaseConfig;
 import com.mwee.android.tools.base.Environment;
 import com.squareup.leakcanary.LeakCanary;
 
+import okhttp3.logging.HttpLoggingInterceptor;
 import xdroid.mwee.com.mwbase.okhttp.OkHttpUtils;
 import okhttp3.OkHttpClient;
 import xdroid.mwee.com.zmstudy.business.db.DBInit;
@@ -30,9 +31,13 @@ public class ClientApplication extends Application {
         super.onCreate();
         context = getApplicationContext();
 
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(10000L, TimeUnit.MILLISECONDS)
                 .readTimeout(10000L, TimeUnit.MILLISECONDS)
+                .addInterceptor(logging)
                 //其他配置
                 .build();
 

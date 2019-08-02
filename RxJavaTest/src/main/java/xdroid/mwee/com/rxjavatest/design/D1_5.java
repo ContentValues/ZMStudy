@@ -34,17 +34,11 @@ public class D1_5 {
         new OctalObserver(subject);
         new BinaryObserver(subject);
 
+//        subject.setState(10);
+//
         subject.setState(10);
 
-        subject.setState(15);
 
-
-    }
-
-
-    static class Student{
-
-        public int age = 10;
     }
 
 

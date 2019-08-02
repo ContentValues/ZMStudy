@@ -1,8 +1,6 @@
 package xdroid.mwee.com.zmstudy.ui.activity;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -12,34 +10,31 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.io.NotSerializableException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Executors;
 
 import xdroid.mwee.com.mwcommon.base.BaseActivity;
 import xdroid.mwee.com.mwcommon.base.XFragmentAdapter;
 import xdroid.mwee.com.zmstudy.R;
 import xdroid.mwee.com.zmstudy.ui.fragment.AnimatorViewFragment;
-import xdroid.mwee.com.zmstudy.ui.fragment.FastFoodOrderFragment;
 import xdroid.mwee.com.zmstudy.ui.fragment.GirlFragment;
 import xdroid.mwee.com.zmstudy.ui.fragment.HandlerFragment;
 import xdroid.mwee.com.zmstudy.ui.fragment.HomeFragment;
-import xdroid.mwee.com.zmstudy.ui.fragment.TableFragment;
+import xdroid.mwee.com.zmstudy.ui.fragment.JobSchedulerFragment;
+import xdroid.mwee.com.zmstudy.ui.fragment.MultiTypeFragment;
+import xdroid.mwee.com.zmstudy.ui.fragment.PieChartFragment;
+import xdroid.mwee.com.zmstudy.ui.fragment.PieRatioFragment;
+import xdroid.mwee.com.zmstudy.ui.fragment.ProviderFragment;
+import xdroid.mwee.com.zmstudy.ui.fragment.RatioWaveViewFragment;
+import xdroid.mwee.com.zmstudy.ui.fragment.TPRoseChartViewFragment;
+import xdroid.mwee.com.zmstudy.ui.fragment.TPSeekArcViewFragment;
+import xdroid.mwee.com.zmstudy.ui.fragment.WaveViewFragment;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar;
@@ -49,66 +44,15 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     ViewPager viewPager;
 
     private List<Fragment> fragmentList = new ArrayList<>();
-    private String[] titles = {"小帅哥", "妹子"/*, "订单", "桌台"*/, "动画", "Handler Thread"};
+    private String[] titles = {/*"小帅哥", "妹子"*//*, "订单", "桌台"*//*, "动画", "Handler Thread", "JobSchduler",*/ "MultiTypeFragment", "测试","PieChart","线圈比例","水波","比列","渐变饼图","SeekArc"};
 
-    private int[] pics = new int[]{R.mipmap.ios_icon, R.mipmap.js_icon/*, R.mipmap.other_icon, R.mipmap.android_icon*/, R.mipmap.android_icon, R.mipmap.js_icon};
+    //    private int[] pics = new int[]{R.mipmap.ios_icon, R.mipmap.js_icon/*, R.mipmap.other_icon, R.mipmap.android_icon*/, R.mipmap.android_icon, R.mipmap.js_icon};
     private DrawerLayout drawer_layout;
     private NavigationView navigationView;
 
 
     @Override
     public void initView() {
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        Handler handler = new Handler(new Handler.Callback() {
-            @Override
-            public boolean handleMessage(Message msg) {
-                return false;
-            }
-        });
-
-
-
-        handler.sendMessage(Message.obtain(handler,1,"你好"));
-        //Hashtable
-
-        //ThreadLocal
-
-        //StringBuilder
-        //ArrayList
-        //Stack
-
-//        LinkedList
-//
-//        Thread
-//        ArrayList
-//        HashSet
-//        Object
-//        Exception
-//        Executors
-//        ArrayList
-//        LinkedList
-
-/*
-        StringBuffer
-        StringBuilder
-
-                String*/
-
-
-
-       // Stack
-        //HashMap
-        //IntentService
-/*
-        Proxy.newProxyInstance()
-        InvocationHandler
-        Socket
-        ServerSocket
-        CountDownLatch
-        Thread
-        Handler*/
 
         drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -118,7 +62,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
 
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
@@ -130,12 +73,22 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public void initData(Bundle savedInstanceState) {
         super.initData(savedInstanceState);
 
-        fragmentList.add(HomeFragment.newInstance());
-        fragmentList.add(GirlFragment.newInstance());
-//        fragmentList.add(FastFoodOrderFragment.newInstance());
-//        fragmentList.add(TableFragment.newInstance());
-        fragmentList.add(AnimatorViewFragment.newInstance());
-        fragmentList.add(HandlerFragment.newInstance());
+//        fragmentList.add(HomeFragment.newInstance());
+//        fragmentList.add(GirlFragment.newInstance());
+////        fragmentList.add(FastFoodOrderFragment.newInstance());
+////        fragmentList.add(TableFragment.newInstance());
+//        fragmentList.add(AnimatorViewFragment.newInstance());
+//        fragmentList.add(HandlerFragment.newInstance());
+//        fragmentList.add(JobSchedulerFragment.newInstance());
+
+        fragmentList.add(MultiTypeFragment.newInstance());
+        fragmentList.add(ProviderFragment.newInstance());
+        fragmentList.add(PieChartFragment.newInstance());
+        fragmentList.add(PieRatioFragment.newInstance());
+        fragmentList.add(WaveViewFragment.newInstance());
+        fragmentList.add(RatioWaveViewFragment.newInstance());
+        fragmentList.add(TPRoseChartViewFragment.newInstance());
+        fragmentList.add(TPSeekArcViewFragment.newInstance());
 
        /* Vector
         ConcurrentHashMap
@@ -229,9 +182,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private View makeTabView(int position) {
         View tabView = LayoutInflater.from(this).inflate(R.layout.view_empty1, null);
         TextView textView = tabView.findViewById(R.id.textview);
-        ImageView imageView = tabView.findViewById(R.id.imageview);
         textView.setText(titles[position]);
-        imageView.setImageResource(pics[position]);
+//        ImageView imageView = tabView.findViewById(R.id.imageview);
+//        imageView.setImageResource(pics[position]);
         return tabView;
     }
 

@@ -19,8 +19,8 @@ public class ProxyD {
     public static void main(String[] args) {
 
 
-        Person zhangsan = new Student("张三");
-        InvocationHandler invocationHandler = new ProxyD.StudentProxy<>(zhangsan);
+        //Person zhangsan = new Student("张三");
+        InvocationHandler invocationHandler = new ProxyD.StudentProxy<>();
 
         Person person = (Person) Proxy.newProxyInstance(Person.class.getClassLoader(), new Class<?>[]{Person.class}, invocationHandler);
 
@@ -64,11 +64,11 @@ public class ProxyD {
 
     static class StudentProxy<T> implements InvocationHandler {
 
-        private T target;
-
-        public StudentProxy(T target) {
-            this.target = target;
-        }
+//        private T target;
+//
+//        public StudentProxy(T target) {
+//            this.target = target;
+//        }
 
         @Override
         public Object invoke(Object o, Method method, Object[] objects) throws Throwable {

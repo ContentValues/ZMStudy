@@ -76,11 +76,21 @@ public class Linked_1 {
         //链表1：1->2->3->4-5
 
         int length = 0;
+
         while (head != null) {
+
             length++;
             head = head.next;
+
         }
         return length;
+
+//        int length = 0;
+//        while (head != null) {
+//            length++;
+//            head = head.next;
+//        }
+//        return length;
 
 //        if (head == null) {
 //            return 0;
@@ -107,6 +117,7 @@ public class Linked_1 {
      * @return 倒数第k个节点
      */
     public static LinkNote findLastNode(LinkNote head, int k) {
+
 
 
         if (head == null || k <= 0) {
@@ -188,13 +199,13 @@ public class Linked_1 {
 
     /**
      * 查找单链表中的中间结点
-     * 1 得到链表的长度 然后得到中间的元素
-     * 2 first和second，只不过这里是，两个指针同时向前走，second指针每次走两步，first指针每次走一步，直到second指针走到最后一个结点时，此时first指针所指的结点就是中间结点。
+     * first和second，只不过这里是，两个指针同时向前走，second指针每次走两步，first指针每次走一步，直到second指针走到最后一个结点时，此时first指针所指的结点就是中间结点。
      *
      * @param head
      * @return
      */
     public static LinkNote findMidNode(LinkNote head) {
+
 
         //0个元素 只有一个元素 只有二个元素
         //链表1：1->2->3->4-5
@@ -234,6 +245,7 @@ public class Linked_1 {
         //链表1：1->2
         //链表2：1->2->3
         //合并： 1->1->2->2->3
+
         if (head1 == null) {
             return head2;
         }
@@ -298,6 +310,34 @@ public class Linked_1 {
     }
 
 
+    public static LinkNote reverseList1(LinkNote head) {
+
+        Stack<LinkNote> stack = new Stack<>();
+        while (head != null){
+            stack.push(head);
+            head = head.next;
+        }
+        LinkNote temp = new LinkNote(-1);
+
+        LinkNote tempFlag = temp;
+        while (!stack.isEmpty()){
+            LinkNote note =  stack.pop();
+            note.next = null;
+            tempFlag.next = note;
+            tempFlag = tempFlag.next;
+        }
+        return temp.next;
+    }
+
+
+
+
+
+
+
+
+
+
     /**
      * 单链表的反转
      * <p>
@@ -307,41 +347,53 @@ public class Linked_1 {
      * @return
      */
     public static LinkNote reverseList(LinkNote head) {
+//
+//        Stack<LinkNote> stack = new Stack<>();
+//        while (head != null) {
+//
+//            stack.push(head);
+//            head = head.next;
+//
+//
+//        }
+//
+//        LinkNote linkHead = new LinkNote(-1);
+//
+//        LinkNote temp = linkHead;
+//
+//        while (!stack.isEmpty()) {
+//
+//            LinkNote note = stack.pop();
+//
+//            note.next = null;
+//
+//            temp.next = note;
+//
+//            temp = temp.next;
+//
+//
+//        }
+//
+//        return linkHead.next;
+
+
 
         // 1--2--3
 
-        Stack<LinkNote> stack = new Stack<>();
-
-        while (head != null) {
-            stack.push(head);
-            head = head.next;
+        if (head == null || head.next == null) {
+            return head;
         }
-
-        LinkNote headR = new LinkNote(-1);
-        LinkNote tempR = headR;
-        while (!stack.isEmpty()) {
-            LinkNote var = stack.pop();
-            var.next = null;
-            tempR.next = var;
-            tempR = tempR.next;
+        LinkNote newHead = null; // 保存链表新表头
+        LinkNote current = head; // 保存当前链表的遍历节点
+        while (current != null) {
+            // 保存当前节点的下一个节点
+            LinkNote next = current.next;
+            current.next = newHead;
+            newHead = current;
+            current = next;
         }
+        return newHead;
 
-        return headR.next;
-
-
-//        if (head == null || head.next == null) {
-//            return head;
-//        }
-//        LinkNote newHead = null; // 保存链表新表头
-//        LinkNote current = head; // 保存当前链表的遍历节点
-//        while (current != null) {
-//            // 保存当前节点的下一个节点
-//            LinkNote next = current.next;
-//            current.next = newHead;
-//            newHead = current;
-//            current = next;
-//        }
-//        return newHead;
     }
 
 

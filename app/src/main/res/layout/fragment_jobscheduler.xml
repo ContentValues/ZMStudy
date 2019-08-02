@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/mStartJob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开启job"/>
+
+    <Button
+        android:id="@+id/mEndJob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="关闭job"/>
+
+    <TextView
+        android:id="@+id/mResult"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textColor="@color/colorAccent"
+        android:text="job返回结果"/>
+
+</LinearLayout>

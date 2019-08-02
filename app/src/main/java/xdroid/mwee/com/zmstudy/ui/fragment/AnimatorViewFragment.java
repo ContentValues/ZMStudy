@@ -1,31 +1,10 @@
 package xdroid.mwee.com.zmstudy.ui.fragment;
-
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.alibaba.fastjson.JSON;
-import com.jakewharton.rxbinding.view.RxView;
-import com.mwee.android.tools.LogUtil;
-
-import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
-
-import rx.functions.Action1;
 import xdroid.mwee.com.mwcommon.base.BaseFragment;
-import xdroid.mwee.com.mwcommon.callback.ResultCallback;
 import xdroid.mwee.com.zmstudy.R;
-import xdroid.mwee.com.zmstudy.model.bean.KBTempDataResponse;
-import xdroid.mwee.com.mwbase.NetError;
-import xdroid.mwee.com.mwbase.retrofit.ApiSubcriber;
-import xdroid.mwee.com.zmstudy.net.service.HttpService;
-import xdroid.mwee.com.mwbase.retrofit.XRetrofit;
-import xdroid.mwee.com.zmstudy.net.XApiService;
-import xdroid.mwee.com.mwbase.RXUtils;
 import xdroid.mwee.com.zmstudy.ui.activity.ActivityBad;
 
 /**
@@ -99,7 +78,7 @@ public class AnimatorViewFragment extends BaseFragment {
             public void onClick(View v) {
                /* Log.d("TAG", "mTimerImg onClick execute  onClick");
                 IntentServiceActivity.launch(getActivityWithinHost());*/
-                ActivityBad.launch(getActivityWithinHost());
+                ActivityBad.launch(getActivity());
 
             }
         });

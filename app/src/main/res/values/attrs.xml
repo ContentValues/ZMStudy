@@ -6,5 +6,71 @@
         <attr name="textSize" format="dimension"></attr>
     </declare-styleable>
 
+    <declare-styleable name="CountDownView">
+        <!--view半径-->
+        <attr name="cd_circle_radius" format="dimension" />
+        <!--画笔宽度-->
+        <attr name="cd_arc_width" format="dimension" />
+        <!--画笔颜色-->
+        <attr name="cd_arc_color" format="color" />
+        <!--背景颜色-->
+        <attr name="cd_bg_color" format="color" />
+        <!--字体颜色-->
+        <attr name="cd_text_color" format="color" />
+        <!--字体尺寸-->
+        <attr name="cd_text_size" format="dimension" />
+        <!--动画执行时长-->
+        <attr name="cd_animator_time" format="integer" />
+        <!--时间单位-->
+        <attr name="cd_animator_time_unit" format="string" />
+        <!--动画进退方式-->
+        <attr name="cd_retreat_type" format="enum">
+            <!--外层的圆弧逐渐变长-->
+            <enum name="forward" value="1" />
+            <!--外层的圆弧逐渐减短-->
+            <enum name="back" value="2" />
+        </attr>
+        <!--加载进度的开始位置-->
+        <attr name="cd_location" format="enum">
+            <enum name="left" value="1" />
+            <enum name="top" value="2" />
+            <enum name="right" value="3" />
+            <enum name="bottom" value="4" />
+        </attr>
+    </declare-styleable>
+
+
+
+    <declare-styleable name="PieChartView">
+        <attr name="title" format="string"/>
+        <attr name="subTitle" format="string"/>
+        <attr name="titleSize" format="dimension"/>
+        <attr name="subTitleSize" format="dimension"/>
+        <attr name="strokeWidth" format="dimension"/>
+        <attr name="colorAlpha" format="float"/>
+        <attr name="isContinueMode" format="boolean"/>
+        <attr name="anim_duration" format="integer"/>
+
+    </declare-styleable>
+
+
+
+    <declare-styleable name="SeekArc">
+        <attr name="thumb" format="reference" />
+        <attr name="thumbOffset" format="dimension" />
+        <attr name="max" format="integer" />
+        <attr name="progressWidth" format="dimension" />
+        <attr name="arcWidth" format="dimension" />
+        <attr name="progress" format="integer" />
+        <attr name="rotation" format="integer" />
+        <attr name="startAngle" format="integer" />
+        <attr name="sweepAngle" format="integer" />
+        <attr name="arcColor" format="color" />
+        <attr name="progressColor" format="color" />
+        <attr name="roundEdges" format="boolean" />
+        <attr name="touchInside" format="boolean" />
+        <attr name="clockwise" format="boolean" />
+    </declare-styleable>
+
 
 </resources>

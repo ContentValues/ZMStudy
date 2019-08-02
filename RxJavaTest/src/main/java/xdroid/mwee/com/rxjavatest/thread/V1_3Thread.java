@@ -83,7 +83,7 @@ public class V1_3Thread {
                 V1_3Thread.class.notify();
                 System.out.println("thread2 is sleeping ten millisecond ...");
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(10000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
