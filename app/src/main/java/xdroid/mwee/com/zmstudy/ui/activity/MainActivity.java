@@ -137,6 +137,10 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         fragmentList.add(AnimatorViewFragment.newInstance());
         fragmentList.add(HandlerFragment.newInstance());
 
+
+
+        System.out.println("测试代码合并");
+
        /* Vector
         ConcurrentHashMap
         Hashtable
