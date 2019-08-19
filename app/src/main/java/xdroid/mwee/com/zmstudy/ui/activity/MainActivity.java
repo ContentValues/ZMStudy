@@ -23,6 +23,7 @@ import xdroid.mwee.com.mwcommon.base.BaseActivity;
 import xdroid.mwee.com.mwcommon.base.XFragmentAdapter;
 import xdroid.mwee.com.zmstudy.R;
 import xdroid.mwee.com.zmstudy.ui.fragment.AnimatorViewFragment;
+import xdroid.mwee.com.zmstudy.ui.fragment.BenefitProgressFragment;
 import xdroid.mwee.com.zmstudy.ui.fragment.GirlFragment;
 import xdroid.mwee.com.zmstudy.ui.fragment.HandlerFragment;
 import xdroid.mwee.com.zmstudy.ui.fragment.HomeFragment;
@@ -44,7 +45,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     ViewPager viewPager;
 
     private List<Fragment> fragmentList = new ArrayList<>();
-    private String[] titles = {/*"小帅哥", "妹子"*//*, "订单", "桌台"*//*, "动画", "Handler Thread", "JobSchduler",*/ "MultiTypeFragment", "测试","PieChart","线圈比例","水波","比列","渐变饼图","SeekArc"};
+    private String[] titles = {/*"小帅哥", "妹子"*//*, "订单", "桌台"*//*, "动画", "Handler Thread", "JobSchduler",*/ "MultiTypeFragment", "测试","PieChart","线圈比例","水波","比列","渐变饼图","SeekArc","BenefitProgress"};
 
     //    private int[] pics = new int[]{R.mipmap.ios_icon, R.mipmap.js_icon/*, R.mipmap.other_icon, R.mipmap.android_icon*/, R.mipmap.android_icon, R.mipmap.js_icon};
     private DrawerLayout drawer_layout;
@@ -89,6 +90,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         fragmentList.add(RatioWaveViewFragment.newInstance());
         fragmentList.add(TPRoseChartViewFragment.newInstance());
         fragmentList.add(TPSeekArcViewFragment.newInstance());
+        fragmentList.add(BenefitProgressFragment.newInstance());
 
        /* Vector
         ConcurrentHashMap

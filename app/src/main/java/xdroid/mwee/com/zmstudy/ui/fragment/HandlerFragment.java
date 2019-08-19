@@ -2,21 +2,21 @@ package xdroid.mwee.com.zmstudy.ui.fragment;
 
 import android.os.Looper;
 import android.view.View;
-
-import com.mwee.android.tools.LogUtil;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
-import okhttp3.Call;
-import rx.Subscription;
-import rx.functions.Action0;
-import rx.schedulers.Schedulers;
-import xdroid.mwee.com.mwbase.sunline.EdspClient;
-import xdroid.mwee.com.mwbase.sunline.EdspClient2;
-import xdroid.mwee.com.mwbase.sunline.RespCallBack;
+//
+//import com.mwee.android.tools.LogUtil;
+//
+//import java.io.IOException;
+//import java.util.HashMap;
+//import java.util.Map;
+//import java.util.concurrent.TimeUnit;
+//
+//import okhttp3.Call;
+//import rx.Subscription;
+//import rx.functions.Action0;
+//import rx.schedulers.Schedulers;
+//import xdroid.mwee.com.mwbase.sunline.EdspClient;
+//import xdroid.mwee.com.mwbase.sunline.EdspClient2;
+//import xdroid.mwee.com.mwbase.sunline.RespCallBack;
 import xdroid.mwee.com.mwcommon.base.BaseFragment;
 import xdroid.mwee.com.zmstudy.R;
 
@@ -52,49 +52,18 @@ public class HandlerFragment extends BaseFragment {
     @Override
     public void initView(View v) {
 
-        v.findViewById(R.id.tvHanler).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Map<String, String> map = new HashMap<>();
-                map.put("tenantName", "user03");
-                map.put("categories", "{}");
-                map.put("clusterId", "12");
-                map.put("remarks", "ceshi");
-                map.put("status", "on");
-                try {
-
-                    EdspClient.doPost("http://10.22.4.243:9009/gateway", map, new RespCallBack() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
-
-                        }
-
-                        @Override
-                        public void onResponse(Call call, String response) throws IOException {
-                        }
-                    });
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
-
-
-        v.findViewById(R.id.tvImgHandler).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Map<String, String> map = new HashMap<>();
-                map.put("tenantName", "user03");
-                map.put("categories", "{}");
-                map.put("clusterId", "12");
-                map.put("remarks", "ceshi");
-                map.put("status", "on");
-                try {
-
+//        v.findViewById(R.id.tvHanler).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Map<String, String> map = new HashMap<>();
+//                map.put("tenantName", "user03");
+//                map.put("categories", "{}");
+//                map.put("clusterId", "12");
+//                map.put("remarks", "ceshi");
+//                map.put("status", "on");
+//                try {
+//
 //                    EdspClient.doPost("http://10.22.4.243:9009/gateway", map, new RespCallBack() {
 //                        @Override
 //                        public void onFailure(Call call, IOException e) {
@@ -105,22 +74,40 @@ public class HandlerFragment extends BaseFragment {
 //                        public void onResponse(Call call, String response) throws IOException {
 //                        }
 //                    });
-
-
-                    EdspClient2.doPost("API01","http://10.22.4.243:9009/gateway","1.0", "123456789","123456","RSA",map, new RespCallBack() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
-
-                        }
-
-                        @Override
-                        public void onResponse(Call call, String response) throws IOException {
-                        }
-                    });
-
-
-
-//                    EdspClient2.doPost("http://10.22.4.243:9009/gateway",map, new RespCallBack() {
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//        });
+//
+//
+//        v.findViewById(R.id.tvImgHandler).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Map<String, String> map = new HashMap<>();
+//                map.put("tenantName", "user03");
+//                map.put("categories", "{}");
+//                map.put("clusterId", "12");
+//                map.put("remarks", "ceshi");
+//                map.put("status", "on");
+//                try {
+//
+////                    EdspClient.doPost("http://10.22.4.243:9009/gateway", map, new RespCallBack() {
+////                        @Override
+////                        public void onFailure(Call call, IOException e) {
+////
+////                        }
+////
+////                        @Override
+////                        public void onResponse(Call call, String response) throws IOException {
+////                        }
+////                    });
+//
+//
+//                    EdspClient2.doPost("API01","http://10.22.4.243:9009/gateway","1.0", "123456789","123456","RSA",map, new RespCallBack() {
 //                        @Override
 //                        public void onFailure(Call call, IOException e) {
 //
@@ -130,15 +117,28 @@ public class HandlerFragment extends BaseFragment {
 //                        public void onResponse(Call call, String response) throws IOException {
 //                        }
 //                    });
-
-
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
+//
+//
+//
+////                    EdspClient2.doPost("http://10.22.4.243:9009/gateway",map, new RespCallBack() {
+////                        @Override
+////                        public void onFailure(Call call, IOException e) {
+////
+////                        }
+////
+////                        @Override
+////                        public void onResponse(Call call, String response) throws IOException {
+////                        }
+////                    });
+//
+//
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//        });
 
 
 
