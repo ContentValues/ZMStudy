@@ -8,8 +8,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    compileSdkVersion 28
-    buildToolsVersion '28.0.0'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
@@ -34,7 +34,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
-    implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
+//    implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
     implementation 'org.jetbrains:annotations:15.0'
     implementation 'org.jetbrains:annotations:15.0'
     //implementation 'com.gelitenight.waveview:waveview:1.0.0'

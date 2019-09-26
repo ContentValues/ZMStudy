@@ -43,7 +43,7 @@ public class GirlFragment extends BasePagerFragment {
 
     @Override
     public RecyclerView.LayoutManager getLayoutManager() {
-        return new GridLayoutManager(getContext(), 1);
+        return new GridLayoutManager(getContext(), 3);
     }
 
 }

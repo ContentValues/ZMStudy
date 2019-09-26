@@ -45,8 +45,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     ViewPager viewPager;
 
     private List<Fragment> fragmentList = new ArrayList<>();
-    private String[] titles = {/*"小帅哥", "妹子"*//*, "订单", "桌台"*//*, "动画", "Handler Thread", "JobSchduler",*/ "MultiTypeFragment", "测试","PieChart","线圈比例","水波","比列","渐变饼图","SeekArc","BenefitProgress"};
-
+//    private String[] titles = {/*"小帅哥", "妹子"*//*, "订单", "桌台"*//*, "动画", "Handler Thread", "JobSchduler",*/ "MultiTypeFragment", "测试","PieChart","线圈比例","水波","比列","渐变饼图","SeekArc","BenefitProgress"};
+    private String[] titles = {"小帅哥", "妹子"};
     //    private int[] pics = new int[]{R.mipmap.ios_icon, R.mipmap.js_icon/*, R.mipmap.other_icon, R.mipmap.android_icon*/, R.mipmap.android_icon, R.mipmap.js_icon};
     private DrawerLayout drawer_layout;
     private NavigationView navigationView;
@@ -74,23 +74,23 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public void initData(Bundle savedInstanceState) {
         super.initData(savedInstanceState);
 
-//        fragmentList.add(HomeFragment.newInstance());
-//        fragmentList.add(GirlFragment.newInstance());
+        fragmentList.add(HomeFragment.newInstance());
+        fragmentList.add(GirlFragment.newInstance());
 ////        fragmentList.add(FastFoodOrderFragment.newInstance());
 ////        fragmentList.add(TableFragment.newInstance());
 //        fragmentList.add(AnimatorViewFragment.newInstance());
 //        fragmentList.add(HandlerFragment.newInstance());
 //        fragmentList.add(JobSchedulerFragment.newInstance());
 
-        fragmentList.add(MultiTypeFragment.newInstance());
-        fragmentList.add(ProviderFragment.newInstance());
-        fragmentList.add(PieChartFragment.newInstance());
-        fragmentList.add(PieRatioFragment.newInstance());
-        fragmentList.add(WaveViewFragment.newInstance());
-        fragmentList.add(RatioWaveViewFragment.newInstance());
-        fragmentList.add(TPRoseChartViewFragment.newInstance());
-        fragmentList.add(TPSeekArcViewFragment.newInstance());
-        fragmentList.add(BenefitProgressFragment.newInstance());
+//        fragmentList.add(MultiTypeFragment.newInstance());
+//        fragmentList.add(ProviderFragment.newInstance());
+//        fragmentList.add(PieChartFragment.newInstance());
+//        fragmentList.add(PieRatioFragment.newInstance());
+//        fragmentList.add(WaveViewFragment.newInstance());
+//        fragmentList.add(RatioWaveViewFragment.newInstance());
+//        fragmentList.add(TPRoseChartViewFragment.newInstance());
+//        fragmentList.add(TPSeekArcViewFragment.newInstance());
+//        fragmentList.add(BenefitProgressFragment.newInstance());
 
        /* Vector
         ConcurrentHashMap
