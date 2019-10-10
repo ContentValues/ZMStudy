@@ -1,5 +1,6 @@
 package xdroid.mwee.com.zmstudy.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -10,32 +11,18 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
+import com.sugart.composition.welcome.WelcomeActitvity;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
 import xdroid.mwee.com.mwcommon.base.BaseActivity;
 import xdroid.mwee.com.mwcommon.base.XFragmentAdapter;
 import xdroid.mwee.com.zmstudy.R;
-import xdroid.mwee.com.zmstudy.ui.fragment.AnimatorViewFragment;
-import xdroid.mwee.com.zmstudy.ui.fragment.BenefitProgressFragment;
 import xdroid.mwee.com.zmstudy.ui.fragment.GirlFragment;
-import xdroid.mwee.com.zmstudy.ui.fragment.HandlerFragment;
 import xdroid.mwee.com.zmstudy.ui.fragment.HomeFragment;
-import xdroid.mwee.com.zmstudy.ui.fragment.JobSchedulerFragment;
-import xdroid.mwee.com.zmstudy.ui.fragment.MultiTypeFragment;
-import xdroid.mwee.com.zmstudy.ui.fragment.PieChartFragment;
-import xdroid.mwee.com.zmstudy.ui.fragment.PieRatioFragment;
-import xdroid.mwee.com.zmstudy.ui.fragment.ProviderFragment;
-import xdroid.mwee.com.zmstudy.ui.fragment.RatioWaveViewFragment;
-import xdroid.mwee.com.zmstudy.ui.fragment.TPRoseChartViewFragment;
-import xdroid.mwee.com.zmstudy.ui.fragment.TPSeekArcViewFragment;
-import xdroid.mwee.com.zmstudy.ui.fragment.WaveViewFragment;
+import xdroid.mwee.com.zmstudy.ui.sunline.TEBonanzaViewFragment;
+import xdroid.mwee.com.zmstudy.ui.sunline.TEFlunkViewFragment;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar;
@@ -45,9 +32,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     ViewPager viewPager;
 
     private List<Fragment> fragmentList = new ArrayList<>();
-//    private String[] titles = {/*"小帅哥", "妹子"*//*, "订单", "桌台"*//*, "动画", "Handler Thread", "JobSchduler",*/ "MultiTypeFragment", "测试","PieChart","线圈比例","水波","比列","渐变饼图","SeekArc","BenefitProgress"};
-    private String[] titles = {"小帅哥", "妹子"};
-    //    private int[] pics = new int[]{R.mipmap.ios_icon, R.mipmap.js_icon/*, R.mipmap.other_icon, R.mipmap.android_icon*/, R.mipmap.android_icon, R.mipmap.js_icon};
+    private String[] titles = {"小帅哥", "妹子", "打钩插件","打叉插件"};
     private DrawerLayout drawer_layout;
     private NavigationView navigationView;
 
@@ -55,9 +40,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     public void initView() {
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer_layout.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -66,6 +53,41 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
+
+
+        /**
+         *
+         * 1) bindToLifecycle()可以使Observable事件和当前的Activity绑定，实现生命周期同步。也就是Activity 的 onDestroy() 方法被调用后，Observable 的订阅关系才解除
+         *
+         * 2) 指定在Activity其他的生命状态和订阅关系保持同步， bindUntilEvent()方法。
+         *
+         * bindUntilEvent( ActivityEvent event)
+         *
+         * ActivityEvent.CREATE: 在Activity的onCreate()方法执行后，解除绑定。
+         *
+         * ActivityEvent.START:在Activity的onStart()方法执行后，解除绑定。
+         *
+         * ActivityEvent.RESUME:在Activity的onResume()方法执行后，解除绑定。
+         *
+         * ActivityEvent.PAUSE: 在Activity的onPause()方法执行后，解除绑定。
+         *
+         * ActivityEvent.STOP:在Activity的onStop()方法执行后，解除绑定。
+         *
+         * ActivityEvent.DESTROY:在Activity的onDestroy()方法执行后，解除绑定
+         *
+         */
+        //循环发送数字
+//        Observable.interval(0, 1, TimeUnit.SECONDS)
+//                .subscribeOn( Schedulers.io())
+////                .compose(this.bindToLifecycle())   //bindToLifecycle()可以使Observable事件和当前的Activity绑定，实现生命周期同步。也就是Activity 的 onDestroy() 方法被调用后，Observable 的订阅关系才解除
+//                .compose(this.bindUntilEvent(ActivityEvent.STOP ))//todo 这行代码很重要 不然会导致内存泄漏 activity销毁 事件还没有解绑 容易出问题
+//                .observeOn( AndroidSchedulers.mainThread())
+//                .subscribe(new Action1<Long>() {
+//                    @Override
+//                    public void call(Long aLong) {
+//                        System.out.println("lifecycle--" + aLong);
+//                    }
+//                });
 
     }
 
@@ -76,120 +98,14 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         fragmentList.add(HomeFragment.newInstance());
         fragmentList.add(GirlFragment.newInstance());
-////        fragmentList.add(FastFoodOrderFragment.newInstance());
-////        fragmentList.add(TableFragment.newInstance());
-//        fragmentList.add(AnimatorViewFragment.newInstance());
-//        fragmentList.add(HandlerFragment.newInstance());
-//        fragmentList.add(JobSchedulerFragment.newInstance());
+        fragmentList.add(TEBonanzaViewFragment.newInstance());
+        fragmentList.add(TEFlunkViewFragment.newInstance());
 
-//        fragmentList.add(MultiTypeFragment.newInstance());
-//        fragmentList.add(ProviderFragment.newInstance());
-//        fragmentList.add(PieChartFragment.newInstance());
-//        fragmentList.add(PieRatioFragment.newInstance());
-//        fragmentList.add(WaveViewFragment.newInstance());
-//        fragmentList.add(RatioWaveViewFragment.newInstance());
-//        fragmentList.add(TPRoseChartViewFragment.newInstance());
-//        fragmentList.add(TPSeekArcViewFragment.newInstance());
-//        fragmentList.add(BenefitProgressFragment.newInstance());
-
-       /* Vector
-        ConcurrentHashMap
-        Hashtable
-        HashMap*/
-
-
-       /* Executors.newSingleThreadExecutor();
-        Executors.newFixedThreadPool(3);
-        Executors.newCachedThreadPool();*/
-
-
-       /* tabLayout.addTab(tabLayout.newTab().setText("小帅哥"));
-        tabLayout.addTab(tabLayout.newTab().setText("妹子好漂亮"));
-        tabLayout.addTab(tabLayout.newTab().setText("菜品"));
-        tabLayout.addTab(tabLayout.newTab().setText("桌台"));*/
-
-        //XFragmentAdapter adapter = new XFragmentAdapter(getSupportFragmentManager(), fragmentList, titles);
-
-        //tabLayout.addTab(tabLayout.newTab().setCustomView(R.layout.view_menu_item_header));
-
-        XFragmentAdapter adapter = new XFragmentAdapter(getSupportFragmentManager(), fragmentList);
+        XFragmentAdapter adapter = new XFragmentAdapter(getSupportFragmentManager(), fragmentList, titles);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        setCustomIcon();
-        setupDrawerSelectedListener();
-      /*  for(int i=0;i<titles.length;i++){
-            tabLayout.getTabAt(i).setText(titles[i]);
-        }*/
-
-
-        //viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        //绑定tab点击事件
-        /*tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                System.out.println("tab.getPosition()-->" + tab.getPosition());
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });*/
     }
-
-    private void setupDrawerSelectedListener() {
-
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            private MenuItem mPreMenuItem;
-
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                if (mPreMenuItem != null) mPreMenuItem.setChecked(false);
-                menuItem.setChecked(true);
-                drawer_layout.closeDrawers();
-                mPreMenuItem = menuItem;
-                return true;
-            }
-        });
-    }
-
-
-    /**
-     * 设置自定义位置图标
-     */
-    private void setCustomIcon() {
-
-        for (int i = 0; i < titles.length; i++) {
-            tabLayout.addTab(tabLayout.newTab());
-        }
-
-        for (int i = 0; i < titles.length; i++) {
-            tabLayout.getTabAt(i).setCustomView(makeTabView(i));
-        }
-    }
-
-    /**
-     * 引入布局设置图标和标题
-     *
-     * @param position
-     * @return
-     */
-    private View makeTabView(int position) {
-        View tabView = LayoutInflater.from(this).inflate(R.layout.view_empty1, null);
-        TextView textView = tabView.findViewById(R.id.textview);
-        textView.setText(titles[position]);
-//        ImageView imageView = tabView.findViewById(R.id.imageview);
-//        imageView.setImageResource(pics[position]);
-        return tabView;
-    }
-
 
     @Override
     public int getLayoutId() {
@@ -208,19 +124,31 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.nav_camera) {
             // Handle the camera action
+//           Router.newIntent(this).to(WelcomeActitvity.class).launch();
+            Intent intent = new Intent(this, WelcomeActitvity.class);
+            startActivity(intent);
+            this.finish();
+
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -236,25 +164,5 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
-        return super.onOptionsItemSelected(item);
-    }
-
-
-    @Override
-    protected void onResume() {
-
-        System.out.println("哈哈哈--->" + Arrays.toString(fragmentList.toArray()));
-        super.onResume();
-    }
 }

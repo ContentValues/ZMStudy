@@ -29,7 +29,7 @@ public class GirlAdapter extends SimpleRecAdapter<GankModel.ItemBean, GirlAdapte
     public ViewHolder newViewHolder(View itemView) {
 
         ViewHolder viewHolder =   new ViewHolder(itemView);
-        Log.d(TAG, "onCreateViewHolder GirlAdapter     getItemCount" + getItemCount() +"       viewHolder"+viewHolder.hashCode());
+//        Log.d(TAG, "onCreateViewHolder GirlAdapter     getItemCount" + getItemCount() +"       viewHolder"+viewHolder.hashCode());
         return viewHolder;
     }
 
@@ -41,7 +41,7 @@ public class GirlAdapter extends SimpleRecAdapter<GankModel.ItemBean, GirlAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        Log.d(TAG, "****onBindViewHolder GirlAdapter       getItemCount" + getItemCount()+"       viewHolder"+holder.hashCode());
+//        Log.d(TAG, "****onBindViewHolder GirlAdapter       getItemCount" + getItemCount()+"       viewHolder"+holder.hashCode());
 
 
         GankModel.ItemBean itemBean = data.get(position);

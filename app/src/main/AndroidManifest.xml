@@ -50,6 +50,9 @@
             </intent-filter>
         </activity>
 
+
+        <activity android:name="com.sugart.composition.welcome.WelcomeActitvity"/>
+
         <activity android:name=".ui.activity.WebActivity" />
 
         <!--<activity android:name=".ui.activity.MainActivity" />-->

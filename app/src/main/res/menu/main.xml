@@ -12,13 +12,13 @@
         android:icon="@drawable/ic_menu_gallery"
         android:orderInCategory="30"
         android:title="Import"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:icon="@drawable/ic_menu_share"
         android:orderInCategory="100"
         android:title="Import"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
 
 
     <item

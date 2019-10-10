@@ -27,6 +27,20 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="Gradle: j2v8-4.8.4" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: dagger-compiler-2.17" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: dagger-spi-2.17" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: dagger-producers-2.17" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: dagger-2.17" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javax.inject-1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: google-java-format-1.5" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: guava-25.0-jre" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javapoet-1.11.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jsr250-api-1.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: checker-compat-qual-2.3.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javac-shaded-9-dev-r4023-3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jsr305-1.3.9" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: error_prone_annotations-2.1.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: j2objc-annotations-1.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: animal-sniffer-annotations-1.14" level="project" />
   </component>
 </module>

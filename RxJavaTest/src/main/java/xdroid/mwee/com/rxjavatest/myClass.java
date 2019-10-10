@@ -9,9 +9,9 @@ public class myClass {
 
     public static void main(String[] args) {
 
-        //test1();
-
-        //test2();
+//        test1();
+//
+//        test2();
 
         testFiled();
     }
@@ -45,18 +45,18 @@ public class myClass {
 
     private static void testFiled() {
 
-        try {
-            Field field = Test.class.getDeclaredField("filed");
-            field.setAccessible(true);
-            for (Annotation annotation : field.getAnnotations()) {
-                if (annotation instanceof TestAnnotation) {
-                    System.out.println("testFiled1  id()-->" + ((TestAnnotation) annotation).id());
-                    System.out.println("testFiled1  value()-->" + ((TestAnnotation) annotation).value());
-                }
-            }
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Field field = Test.class.getDeclaredField("filed");
+//            field.setAccessible(true);
+//            for (Annotation annotation : field.getAnnotations()) {
+//                if (annotation instanceof TestAnnotation) {
+//                    System.out.println("testFiled1  id()-->" + ((TestAnnotation) annotation).id());
+//                    System.out.println("testFiled1  value()-->" + ((TestAnnotation) annotation).value());
+//                }
+//            }
+//        } catch (NoSuchFieldException e) {
+//            e.printStackTrace();
+//        }
 
 
        Test test = new Test();
@@ -65,17 +65,17 @@ public class myClass {
                 field.setAccessible(true);
                 for (Annotation annotation : field.getAnnotations()) {
                     if (annotation instanceof TestAnnotation) {
-                        System.out.println("testFiled2  -->" + field.get(test).toString());
+//                        System.out.println("testFiled2  -->" + field.get(test).toString());
                         System.out.println("testFiled2  id()-->" + ((TestAnnotation) annotation).id());
                         System.out.println("testFiled2  value()-->" + ((TestAnnotation) annotation).value());
                     }
                 }
             }
-        } catch (IllegalAccessException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-      /*  for (Method method : Test.class.getMethods()) {
+        for (Method method : Test.class.getMethods()) {
             TestAnnotation methodAnnotation = method.getAnnotation(TestAnnotation.class);
             if (methodAnnotation != null) {
                 System.out.println("testMetbord1  id()-->" + methodAnnotation.id());
@@ -94,13 +94,13 @@ public class myClass {
                     }
                 }
             }
-        }*/
+        }
 
 
         try {
 
-            System.out.println("Test.class.getName()--->" + Test.class.getName());
-            Class object = Class.forName(Test.class.getName());
+//            System.out.println("Test.class.getName()--->" + Test.class.getName());
+//            Class object = Class.forName(Test.class.getName());
 
 
             /*for (Method method : object.getMethods()) {

@@ -2,6 +2,7 @@ package xdroid.mwee.com.rxjavatest.algorithm.sword;
 
 
 import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * Author：created by SugarT
@@ -10,6 +11,22 @@ import java.util.Arrays;
 public class SW_排序 {
 
     public static void main(String[] args) {
+
+
+//        String ss = "NO 680\nKG SUNGAJ BAKAU\n48000 RAWANG\nSELANGOR";
+//
+//
+//        String[] str =  ss.split("\n");
+//
+//        for (String s : str) {
+//            System.out.println(s);
+//        }
+//
+//
+//        System.out.println(Arrays.toString(str));
+
+
+
         int arr[] = {4, 9, 8, 2, 5};
 //        System.out.println(Arrays.toString(冒泡(arr)));
 //        System.out.println(Arrays.toString(选择(arr)));
