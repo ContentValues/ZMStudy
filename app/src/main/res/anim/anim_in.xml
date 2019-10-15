@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--从下往上-->
+    <translate android:fromYDelta="100%p"  android:toYDelta="0" android:duration="1000" />
+
+    <!--从上往下-->
+    <!--<translate android:fromYDelta="-100%p"  android:toYDelta="0" android:duration="1500" />-->
+
+    <!--从右往左-->
+    <!--<translate android:fromXDelta="100%p" android:toXDelta="0" android:duration="1500"/>-->
+
+</set>

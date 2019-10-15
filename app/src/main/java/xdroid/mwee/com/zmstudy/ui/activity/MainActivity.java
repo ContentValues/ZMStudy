@@ -21,8 +21,7 @@ import xdroid.mwee.com.mwcommon.base.XFragmentAdapter;
 import xdroid.mwee.com.zmstudy.R;
 import xdroid.mwee.com.zmstudy.ui.fragment.GirlFragment;
 import xdroid.mwee.com.zmstudy.ui.fragment.HomeFragment;
-import xdroid.mwee.com.zmstudy.ui.sunline.TEBonanzaViewFragment;
-import xdroid.mwee.com.zmstudy.ui.sunline.TEFlunkViewFragment;
+import xdroid.mwee.com.zmstudy.ui.fragment.jdfragment.JDFragment;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar;
@@ -32,7 +31,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     ViewPager viewPager;
 
     private List<Fragment> fragmentList = new ArrayList<>();
-    private String[] titles = {"小帅哥", "妹子", "打钩插件","打叉插件"};
+    private String[] titles = {"小帅哥", "妹子", "京东主页"};
     private DrawerLayout drawer_layout;
     private NavigationView navigationView;
 
@@ -98,8 +97,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         fragmentList.add(HomeFragment.newInstance());
         fragmentList.add(GirlFragment.newInstance());
-        fragmentList.add(TEBonanzaViewFragment.newInstance());
-        fragmentList.add(TEFlunkViewFragment.newInstance());
+        fragmentList.add(JDFragment.newInstance());
 
         XFragmentAdapter adapter = new XFragmentAdapter(getSupportFragmentManager(), fragmentList, titles);
         viewPager.setAdapter(adapter);

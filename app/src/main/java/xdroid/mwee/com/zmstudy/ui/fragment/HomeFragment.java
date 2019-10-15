@@ -1,12 +1,7 @@
 package xdroid.mwee.com.zmstudy.ui.fragment;
 
-import android.app.IntentService;
-import android.os.HandlerThread;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
-import java.util.ArrayList;
-
 import xdroid.mwee.com.mwcommon.base.SimpleRecAdapter;
 import xdroid.mwee.com.zmstudy.ui.adapter.HomeAdapter;
 
