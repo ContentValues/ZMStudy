@@ -18,6 +18,8 @@ public class  SF_Recursive {
 
     public static void main(String[] args) {
 
+        System.out.println("测试合并");
+
 //         System.out.println(getFactorial(4));
 //         System.out.println(getFactorial累计(4));
 //         System.out.println(getFactorial平方(4));
