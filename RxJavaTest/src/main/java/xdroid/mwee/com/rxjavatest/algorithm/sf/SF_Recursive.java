@@ -18,11 +18,11 @@ public class  SF_Recursive {
 
     public static void main(String[] args) {
 
-         System.out.println(getFactorial(4));
-         System.out.println(getFactorial累计(4));
-         System.out.println(getFactorial平方(4));
+//         System.out.println(getFactorial(4));
+//         System.out.println(getFactorial累计(4));
+//         System.out.println(getFactorial平方(4));
 //
-//        System.out.println(recurSive(5));
+        System.out.println(recurSive(5));
         //System.out.println("滴滴-->" + sum(4));
 
         //System.out.println("滴滴-->" + func(4));
@@ -128,14 +128,7 @@ public class  SF_Recursive {
      * n!+n(n-1)!+n(n-2)!+.....+1
      */
     public static int sum(int n) {
-
-
-
-
-
-
-
-        // sum = 1*1  1*1*2 1*1*2*3
+  // sum = 1*1  1*1*2 1*1*2*3
         int func = 1;
         int sum = 0;
         for (int i = 1; i <= n; i++) {

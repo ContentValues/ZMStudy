@@ -13,12 +13,17 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.sugart.composition.welcome.GoogleDevActivity;
 import com.sugart.composition.welcome.WelcomeActitvity;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import xdroid.mwee.com.mwcommon.base.BaseActivity;
 import xdroid.mwee.com.mwcommon.base.XFragmentAdapter;
 import xdroid.mwee.com.zmstudy.R;
+import xdroid.mwee.com.zmstudy.ui.fragment.AnimatorViewFragment;
 import xdroid.mwee.com.zmstudy.ui.fragment.GirlFragment;
 import xdroid.mwee.com.zmstudy.ui.fragment.HomeFragment;
 import xdroid.mwee.com.zmstudy.ui.fragment.jdfragment.JDFragment;
@@ -31,7 +36,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     ViewPager viewPager;
 
     private List<Fragment> fragmentList = new ArrayList<>();
-    private String[] titles = {"小帅哥", "妹子", "京东主页"};
+    private String[] titles = {"小帅哥", "妹子", "京东主页","滑动冲突"};
     private DrawerLayout drawer_layout;
     private NavigationView navigationView;
 
@@ -98,6 +103,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         fragmentList.add(HomeFragment.newInstance());
         fragmentList.add(GirlFragment.newInstance());
         fragmentList.add(JDFragment.newInstance());
+        fragmentList.add(AnimatorViewFragment.newInstance());
 
         XFragmentAdapter adapter = new XFragmentAdapter(getSupportFragmentManager(), fragmentList, titles);
         viewPager.setAdapter(adapter);
@@ -148,6 +154,10 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             this.finish();
 
         } else if (id == R.id.nav_gallery) {
+
+            Intent intent = new Intent(this, GoogleDevActivity.class);
+            startActivity(intent);
+            this.finish();
 
         } else if (id == R.id.nav_slideshow) {
 

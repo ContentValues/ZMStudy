@@ -1,59 +1,137 @@
 package xdroid.mwee.com.rxjavatest;
 
-import java.util.concurrent.TimeUnit;
-import java.util.function.BiFunction;
-import java.util.function.Function;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 public class RX_1 {
 
+    private final static String TAG = RX_1.class.getSimpleName();
+
     // 返回事件流
-//    private Subject<Integer> mBackPressed = PublishSubject.create();
-//    public static void main(String[] args){
-//
-//        ObservableSource<Integer> source = mBackPressed.debounce(2000, TimeUnit.MILLISECONDS)
-//                .map(new Function<Integer, Integer>() {
-//                    @Override
-//                    public Integer apply(Integer integer) throws Exception {
-//                        // 两次点击返回间隔大于2s的事件, 用0表示, 区分正常的点击
-//                        return 0;
-//                    }
-//                });
-//        Disposable disposable = mBackPressed.mergeWith(source)
-//                .scan(new BiFunction<Integer, Integer, Integer>() {
-//                    @Override
-//                    public Integer apply(Integer integer, Integer integer2) {
-//                        if (integer2 == 0) {
-//                            return 0;
-//                        }
-//                        return integer + 1;
-//                    }
-//                })
-//                .filter(new Predicate<Integer>() {
-//                    @Override
-//                    public boolean test(Integer integer) {
-//                        if (integer > 0) {
-//                            return true;
-//                        }
-//                        return false;
-//                    }
-//                })
-//                .subscribe(new Consumer<Integer>() {
-//                    @Override
-//                    public void accept(Integer integer) {
-//                        switch (integer) {
-//                            case 1://适配7.0系统,语言的string跟随activity各自的context不能用getApplicationContext()
-//                                ToastUtil.showToast(R.string.exitTip);
-//                                break;
-//                            case 2:
-//                                appExit();
-//                                break;
-//                            default:
-//                                break;
-//                        }
-//                    }
-//                });
-//
-//    }
+    public static void main(String[] args) {
+
+//       create();
+//        just();
+        fromArray();
+    }
+
+
+    private static void create(){
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(ObservableEmitter<Integer> e) throws Exception {
+                Log.d(TAG, "=========================currentThread name: " + Thread.currentThread().getName());
+                e.onNext(1);
+                e.onNext(2);
+                e.onNext(3);
+                e.onComplete();
+            }
+        }).subscribe(new Observer<Integer>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                Log.d(TAG, "======================onSubscribe");
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+                Log.d(TAG, "======================onNext " + integer);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d(TAG, "======================onError");
+            }
+
+            @Override
+            public void onComplete() {
+                Log.d(TAG, "======================onComplete");
+            }
+        });
+    }
+
+
+
+    private static void just(){
+        Observable.just(1,2,3).subscribe(new Observer<Integer>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                Log.d(TAG, "======================onSubscribe");
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+                Log.d(TAG, "======================onNext " + integer);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d(TAG, "======================onError");
+            }
+
+            @Override
+            public void onComplete() {
+                Log.d(TAG, "======================onComplete");
+            }
+        });
+    }
+
+
+    private static void fromArray(){
+        Integer array[] = {1, 2, 3, 4};
+        Observable.fromArray(array).subscribe(new Observer<Integer>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                Log.d(TAG, "======================onSubscribe");
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+                Log.d(TAG, "======================onNext " + integer);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d(TAG, "======================onError");
+            }
+
+            @Override
+            public void onComplete() {
+                Log.d(TAG, "======================onComplete");
+            }
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    static class Log {
+
+        private static void d(String TAG, String str) {
+            System.out.println(str);
+        }
+    }
 
 
 }

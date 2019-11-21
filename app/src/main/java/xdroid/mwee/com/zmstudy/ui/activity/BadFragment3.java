@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import xdroid.mwee.com.mwcommon.base.BaseFragment;
@@ -34,32 +35,30 @@ import xdroid.mwee.com.zmstudy.ui.view.BadRecyView;
  * onTouch方法返回true，则onTouchEvent方法不会被调用（onClick事件是在onTouchEvent中调用）[那么父View的所有事件都会被消耗掉 不会向上回调]
  * 所以三者优先级是onTouch->onTouchEvent->onClick
  */
-public class BadFragment extends BaseFragment {
+public class BadFragment3 extends BaseFragment {
 
     //private TextView tvText;
 
-    private static String s;
+//    private static String s;
 
-    public static BadFragment newInstance(String s) {
-        BadFragment badFragment = new BadFragment();
+    public static BadFragment3 newInstance() {
+        BadFragment3 badFragment = new BadFragment3();
         Bundle bundle = new Bundle();
-        bundle.putString("key", s);
+//        bundle.putString("key", s);
         badFragment.setArguments(bundle);
         return badFragment;
     }
 
-
-
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_bad_1;
+        return R.layout.fragment_bad_3;
     }
 
 
     @Override
     public void initView(View v) {
         //tvText = v.findViewById(R.id.tvText);
-        s = getArguments().getString("key");
+//        s = getArguments().getString("key");
         //tvText.setText(s);
         /*tvText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,53 +85,53 @@ public class BadFragment extends BaseFragment {
             }
         });
         */
-        BadRecyView mRecyclerView = v.findViewById(R.id.mRecyclerView);
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2, RecyclerView.HORIZONTAL, false));
+//        BadRecyView mRecyclerView = v.findViewById(R.id.mRecyclerView);
+////        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+//        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2, RecyclerView.HORIZONTAL, false));
         //mRecyclerView.addItemDecoration(new VerticalDividerItemDecoration.Builder(getContext()).margin(20).build());
-        Sim sim = new Sim(getContext());
-        String[] strs = {"小美女", "小美女", "小美女", "小美女", "小美女", "小美女", "小美女", "小美女", "小美女", "小美女", "小美女", "小美女", "小美女", "小美女"};
-        sim.setData(strs);
-        mRecyclerView.setAdapter(sim);
-
-        ((TTextView) v.findViewById(R.id.tvText)).setText(s);
+//        Sim sim = new Sim(getContext());
+//        String[] strs = {"View3", "View3", "View3", "View3", "View3", "View3", "View3", "View3", "View3", "View3", "View3", "View3", "View3", "View3"};
+//        sim.setData(strs);
+//        mRecyclerView.setAdapter(sim);
+//
+//        ((TTextView) v.findViewById(R.id.tvText)).setText("View3");
 
 
     }
 
 
-    static class Sim extends SimpleRecAdapter<String, Sim.ViewHolder> {
-
-        public Sim(Context context) {
-            super(context);
-        }
-
-        @Override
-        public ViewHolder newViewHolder(View itemView) {
-            return new ViewHolder(itemView);
-        }
-
-        @Override
-        public int getLayoutId() {
-            return R.layout.adapter_area;
-        }
-
-        @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-
-            holder.tvAreaName.setText(s + data.get(position));
-        }
-
-        static class ViewHolder extends RecyclerView.ViewHolder {
-            private TButton tvAreaName;
-
-            public ViewHolder(View itemView) {
-                super(itemView);
-                tvAreaName = itemView.findViewById(R.id.tvAreaName);
-            }
-        }
-
-    }
+//    static class Sim extends SimpleRecAdapter<String, Sim.ViewHolder> {
+//
+//        public Sim(Context context) {
+//            super(context);
+//        }
+//
+//        @Override
+//        public ViewHolder newViewHolder(View itemView) {
+//            return new ViewHolder(itemView);
+//        }
+//
+//        @Override
+//        public int getLayoutId() {
+//            return R.layout.adapter_area;
+//        }
+//
+//        @Override
+//        public void onBindViewHolder(ViewHolder holder, int position) {
+//
+//            holder.tvAreaName.setText(data.get(position));
+//        }
+//
+//        static class ViewHolder extends RecyclerView.ViewHolder {
+//            private TextView tvAreaName;
+//
+//            public ViewHolder(View itemView) {
+//                super(itemView);
+//                tvAreaName = itemView.findViewById(R.id.tvAreaName);
+//            }
+//        }
+//
+//    }
 
 
 }

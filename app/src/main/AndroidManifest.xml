@@ -51,7 +51,9 @@
         </activity>
 
 
-        <activity android:name="com.sugart.composition.welcome.WelcomeActitvity"/>
+        <activity android:name="com.sugart.composition.welcome.WelcomeActitvity" />
+
+        <activity android:name="com.sugart.composition.welcome.GoogleDevActivity" />
 
         <activity android:name=".ui.activity.WebActivity" />
 
@@ -62,8 +64,9 @@
 
         <activity android:name=".ui.activity.ActivityBad" />
 
-        <service android:name=".ui.fragment.M_JobService"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service
+            android:name=".ui.fragment.M_JobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
 
 
     </application>

@@ -17,6 +17,7 @@ import com.mwee.android.tools.LogUtil;
 
 public class BadViewPager extends ViewPager {
 
+
     private int mLastXIntercept;
     private int mLastYIntercept;
 
@@ -30,7 +31,33 @@ public class BadViewPager extends ViewPager {
         super(context, attrs);
     }
 
-  /*  @Override
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+
+        final int action = ev.getAction() & MotionEvent.ACTION_MASK;
+
+        boolean inter = false;
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG, TAG+"--"+"dispatchTouchEvent MotionEvent.ACTION_DOWN");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.d(TAG, TAG+"--"+"dispatchTouchEvent MotionEvent.ACTION_MOVE");
+                inter = true;
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d(TAG, TAG+"--"+"dispatchTouchEvent MotionEvent.ACTION_UP");
+                break;
+            default:
+                break;
+        }
+        boolean eventTouch = super.dispatchTouchEvent(ev);
+        Log.d(TAG,TAG + "--action dispatchTouchEvent [" + action + "]" + eventTouch);
+        return eventTouch;
+//        return inter;
+    }
+
+    @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         boolean intercepted = false;
         int x = (int) ev.getX();
@@ -39,22 +66,24 @@ public class BadViewPager extends ViewPager {
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 intercepted = false;
+                Log.d(TAG, TAG+"--"+"onInterceptTouchEvent MotionEvent.ACTION_DOWN");
                 //调用ViewPager的onInterceptTouchEvent方法初始化mActivePointerId
-                super.onInterceptTouchEvent(ev);
                 break;
             case MotionEvent.ACTION_MOVE:
+                Log.d(TAG, TAG+"--"+"onInterceptTouchEvent MotionEvent.ACTION_MOVE");
                 //横坐标位移增量
                 int deltaX = x - mLastXIntercept;
                 //纵坐标位移增量
                 int deltaY = y - mLastYIntercept;
-                if (Math.abs(deltaX)>Math.abs(deltaY)){
+                if (Math.abs(deltaX) > Math.abs(deltaY)) {
                     //自己消耗事件 不交给孩子处理
                     intercepted = true;
-                }else{
+                } else {
                     intercepted = false;
                 }
                 break;
             case MotionEvent.ACTION_UP:
+                Log.d(TAG, TAG+"--"+"onInterceptTouchEvent MotionEvent.ACTION_UP");
                 intercepted = false;
                 break;
             default:
@@ -64,18 +93,38 @@ public class BadViewPager extends ViewPager {
         mLastXIntercept = x;
         mLastYIntercept = y;
 
-        Log.d(TAG,"intercepted = "+intercepted);
-        return intercepted;
-        //return super.onInterceptTouchEvent(ev);
+
+        boolean eventTouch = super.onInterceptTouchEvent(ev);
+        Log.d(TAG,TAG + "--action onInterceptTouchEvent [" + action + "]" + eventTouch);
+        return eventTouch;
     }
-*/
-   /* @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
+
+
+
+    @Override
+    public boolean onTouchEvent(MotionEvent ev) {
+
         final int action = ev.getAction() & MotionEvent.ACTION_MASK;
-        if (action == MotionEvent.ACTION_DOWN){
-            super.onInterceptTouchEvent(ev);
-            return false;
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG,TAG+"--"+ "onTouchEvent MotionEvent.ACTION_DOWN");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.d(TAG,TAG+"--"+ "onTouchEvent MotionEvent.ACTION_MOVE");
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d(TAG,TAG+"--"+"onTouchEvent MotionEvent.ACTION_UP");
+                break;
+            default:
+                break;
         }
-        return true;
-    }*/
+
+        boolean eventTouch = super.onTouchEvent(ev);
+        Log.d(TAG,TAG + "--action onTouchEvent [" + action + "]" + eventTouch);
+        return eventTouch;
+
+//        return super.onTouchEvent(ev);
+    }
+
+
 }

@@ -9,6 +9,9 @@ public class myClass {
 
     public static void main(String[] args) {
 
+        Hello vvv = new Hello();
+        vvv.aa();
+
 //        test1();
 //
 //        test2();

@@ -43,16 +43,58 @@ public class ActivityBad extends BaseActivity {
         ViewPager badViewPager = findViewById(R.id.mBadViewPager);
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(BadFragment.newInstance("View1"));
-        fragments.add(BadFragment.newInstance("View2"));
-        fragments.add(BadFragment.newInstance("View3"));
-        fragments.add(BadFragment.newInstance("View4"));
+        fragments.add(BadFragment2.newInstance());
+        fragments.add(BadFragment3.newInstance());
+        fragments.add(BadFragment4.newInstance());
         XFragmentAdapter xFragmentAdapter = new XFragmentAdapter(getSupportFragmentManager(),fragments,titles);
         badViewPager.setAdapter(xFragmentAdapter);
 
 
+        badViewPager.setOffscreenPageLimit(0);
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(badViewPager);
     }
 
+
+    private final static String TAG = ActivityBad.class.getSimpleName();
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+
+        final int action = ev.getAction() & MotionEvent.ACTION_MASK;
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG, TAG + "--" + "dispatchTouchEvent MotionEvent.ACTION_DOWN");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.d(TAG, TAG + "--" + "dispatchTouchEvent MotionEvent.ACTION_MOVE");
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d(TAG, TAG + "--" + "dispatchTouchEvent MotionEvent.ACTION_UP");
+                break;
+            default:
+                break;
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent ev) {
+        final int action = ev.getAction() & MotionEvent.ACTION_MASK;
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG,TAG+"--"+ "onTouchEvent MotionEvent.ACTION_DOWN");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.d(TAG,TAG+"--"+ "onTouchEvent MotionEvent.ACTION_MOVE");
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d(TAG,TAG+"--"+"onTouchEvent MotionEvent.ACTION_UP");
+                break;
+            default:
+                break;
+        }
+        return super.onTouchEvent(ev);
+    }
 
 }

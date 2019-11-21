@@ -34,32 +34,30 @@ import xdroid.mwee.com.zmstudy.ui.view.BadRecyView;
  * onTouch方法返回true，则onTouchEvent方法不会被调用（onClick事件是在onTouchEvent中调用）[那么父View的所有事件都会被消耗掉 不会向上回调]
  * 所以三者优先级是onTouch->onTouchEvent->onClick
  */
-public class BadFragment extends BaseFragment {
+public class BadFragment2 extends BaseFragment {
 
     //private TextView tvText;
 
-    private static String s;
+//    private static String s;
 
-    public static BadFragment newInstance(String s) {
-        BadFragment badFragment = new BadFragment();
+    public static BadFragment2 newInstance() {
+        BadFragment2 badFragment = new BadFragment2();
         Bundle bundle = new Bundle();
-        bundle.putString("key", s);
+//        bundle.putString("key", s);
         badFragment.setArguments(bundle);
         return badFragment;
     }
 
-
-
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_bad_1;
+        return R.layout.fragment_bad_2;
     }
 
 
     @Override
     public void initView(View v) {
         //tvText = v.findViewById(R.id.tvText);
-        s = getArguments().getString("key");
+//        s = getArguments().getString("key");
         //tvText.setText(s);
         /*tvText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,11 +89,11 @@ public class BadFragment extends BaseFragment {
         mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2, RecyclerView.HORIZONTAL, false));
         //mRecyclerView.addItemDecoration(new VerticalDividerItemDecoration.Builder(getContext()).margin(20).build());
         Sim sim = new Sim(getContext());
-        String[] strs = {"小美女", "小美女", "小美女", "小美女", "小美女", "小美女", "小美女", "小美女", "小美女", "小美女", "小美女", "小美女", "小美女", "小美女"};
+        String[] strs = {"View2", "View2", "View2", "View2", "View2", "View2", "View2", "View2", "View2", "View2", "View2", "View2", "View2", "View2"};
         sim.setData(strs);
         mRecyclerView.setAdapter(sim);
 
-        ((TTextView) v.findViewById(R.id.tvText)).setText(s);
+        ((TButton) v.findViewById(R.id.tvBttom)).setText("View2");
 
 
     }
@@ -120,7 +118,7 @@ public class BadFragment extends BaseFragment {
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
 
-            holder.tvAreaName.setText(s + data.get(position));
+            holder.tvAreaName.setText( data.get(position));
         }
 
         static class ViewHolder extends RecyclerView.ViewHolder {

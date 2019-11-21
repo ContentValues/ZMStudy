@@ -23,8 +23,12 @@ public class SF_Link {
         singleList.addFooter("A");
         singleList.addFooter("B");
         singleList.addFooter("C");
-        singleList.addFooter("D");
-        singleList.addFooter("E");
+
+        singleList.display();
+
+        singleList.deleteFooter();
+        singleList.deleteFooter();
+        singleList.deleteFooter();
 
         singleList.display();
 
@@ -35,11 +39,11 @@ public class SF_Link {
 
 
 
-        System.out.println("单链表的反转--->");
-
-
-        singleList.reverserNode();
-        singleList.display();
+//        System.out.println("单链表的反转--->");
+//
+//
+//        singleList.reverserNode();
+//        singleList.display();
 //
 //
 //        singleList.addFooter("A");
